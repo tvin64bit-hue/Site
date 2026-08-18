@@ -847,6 +847,10 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
 
 /* ТЗ: отступ до CTA под секцией — 48px. */
 .menu__cta { margin-block-start: 48px; display: flex; justify-content: center; }
+/* Значок внешней ссылки: кнопка уводит на другой сайт, и это должно быть видно
+   до клика, а не только по смене вкладки. */
+.btn__ext { flex: none; opacity: .65; }
+.btn:hover .btn__ext { opacity: 1; }
 
 @media (max-width: 1023.98px) {
   .menu__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
