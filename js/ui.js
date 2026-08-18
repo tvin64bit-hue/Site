@@ -133,45 +133,44 @@
     map.forEach(function (link, section) { io.observe(section); });
   }
 
-  /* ------------------------------------------- Табы «Пространства» */
+  /* ------------------------------------------------------------- Табы */
 
   /* Полноценный паттерн tablist: aria-selected, roving tabindex, стрелки,
-     Home/End. Фото переключается cross-fade'ом (350 мс, ТЗ §4), при
-     prefers-reduced-motion переход мгновенный — за это отвечает CSS. */
-  function initTabs() {
-    var tablist = document.querySelector('[role="tablist"]');
-    if (!tablist) return;
+     Home/End. На странице таких групп две — «Пространства» (§4) и категории
+     меню (§5), поэтому обработчик общий.
 
-    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+     Для «Пространств» дополнительно переключается фоновый кадр зоны
+     (cross-fade 350 мс, ТЗ §4) и бейдж временной заливки. При
+     prefers-reduced-motion переход мгновенный — за это отвечает CSS. */
+  function initTabList(tablist) {
+    const tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
     if (!tabs.length) return;
 
-    var badge = document.querySelector('[data-badge-for]');
+    // Бейдж заглушки ищем в общем предке группы, а не по всей странице:
+    // иначе одна группа табов перетирала бы состояние другой.
+    const scope = tablist.closest('section') || document;
+    const badge = scope.querySelector('[data-badge-for]');
 
     function select(index, moveFocus) {
-      var target = tabs[index];
+      const target = tabs[index];
       if (!target) return;
 
       tabs.forEach(function (tab, i) {
-        var selected = i === index;
+        const selected = i === index;
         tab.setAttribute('aria-selected', String(selected));
         tab.tabIndex = selected ? 0 : -1;
 
-        var panel = document.getElementById(tab.getAttribute('aria-controls'));
-        if (panel) {
-          panel.hidden = !selected;
-          if (selected) panel.setAttribute('data-active', 'true');
-          else panel.removeAttribute('data-active');
-        }
+        const panel = document.getElementById(tab.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !selected;
 
-        // Кадр зоны: id таба вида tab-<ключ> совпадает с data-shot кадра.
-        var key = tab.id.replace(/^tab-/, '');
-        var shot = document.querySelector('[data-shot="' + key + '"]');
+        // Кадр зоны: id таба вида <префикс>-<ключ> совпадает с data-shot кадра.
+        const key = tab.id.replace(/^[^-]*-/, '');
+        const shot = scope.querySelector('[data-shot="' + key + '"]');
         if (shot) {
           if (selected) shot.setAttribute('data-active', 'true');
           else shot.removeAttribute('data-active');
         }
 
-        // Бейдж временной заливки показываем только на своей зоне.
         if (badge && selected) badge.hidden = badge.getAttribute('data-badge-for') !== key;
       });
 
@@ -182,7 +181,7 @@
       tab.addEventListener('click', function () { select(index, false); });
 
       tab.addEventListener('keydown', function (event) {
-        var next = null;
+        let next = null;
         if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
         else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + tabs.length) % tabs.length;
         else if (event.key === 'Home') next = 0;
@@ -193,7 +192,13 @@
       });
     });
 
-    select(0, false);
+    // Стартовое состояние берём из разметки, а не навязываем первый таб.
+    const initial = tabs.findIndex(function (t) { return t.getAttribute('aria-selected') === 'true'; });
+    select(initial < 0 ? 0 : initial, false);
+  }
+
+  function initTabs() {
+    Array.prototype.forEach.call(document.querySelectorAll('[role="tablist"]'), initTabList);
   }
 
   /* ---------------------------------------------------- Появление hero */

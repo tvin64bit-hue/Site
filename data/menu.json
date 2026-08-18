@@ -1,0 +1,122 @@
+[
+  {
+    "id": "hachapuri",
+    "title": "Хачапури",
+    "items": [
+      {
+        "name": "Хачапури по-аджарски",
+        "price": 480,
+        "weight": 300,
+        "photo": "hachapuri-po-adzharski"
+      },
+      {
+        "name": "Хачапури по-аджарски с беконом",
+        "price": 460,
+        "weight": 300,
+        "photo": "hachapuri-po-adzharski-s-bekonom"
+      },
+      {
+        "name": "Хачапури с мраморной горгонзолой",
+        "price": 520,
+        "weight": 305,
+        "photo": "hachapuri-s-mramornoy-gorgonzoloy"
+      },
+      {
+        "name": "Хачапури с грушей и сыром Горгонзола",
+        "price": 530,
+        "weight": 380,
+        "photo": "hachapuri-s-grushey-i-syrom-gorgonzola"
+      },
+      {
+        "name": "Хачапури по-имеретински",
+        "price": 500,
+        "weight": 380,
+        "photo": "hachapuri-po-imeretinski"
+      },
+      {
+        "name": "Хачапури по-мегрельски с копчёным сулугуни",
+        "price": 530,
+        "weight": 430,
+        "photo": "hachapuri-po-megrelski-s-kopchenym-suluguni"
+      },
+      {
+        "name": "Хачапури по-мегрельски с молочным сулугуни",
+        "price": 530,
+        "weight": 430,
+        "photo": null
+      },
+      {
+        "name": "Хачапури Пепперони",
+        "price": 950,
+        "weight": 570,
+        "photo": null
+      },
+      {
+        "name": "Хачапури Горский Три сыра",
+        "price": 990,
+        "weight": 740,
+        "photo": null
+      },
+      {
+        "name": "Пури",
+        "price": 100,
+        "weight": 120,
+        "photo": "puri"
+      }
+    ]
+  },
+  {
+    "id": "hinkali",
+    "title": "Хинкали",
+    "items": [
+      {
+        "name": "Хинкали с телятиной",
+        "price": 115,
+        "weight": 90,
+        "photo": "hinkali-c-telyatinoy"
+      },
+      {
+        "name": "Хинкали с двумя видами сыра, томатами и зеленью",
+        "price": 125,
+        "weight": 90,
+        "photo": null
+      }
+    ]
+  },
+  {
+    "id": "mangal",
+    "title": "Мангал",
+    "items": [
+      {
+        "name": "Шашлык из сочной свинины",
+        "price": 550,
+        "weight": 190,
+        "photo": "shashlyk-iz-sochnoy-svininy"
+      },
+      {
+        "name": "Люля-кебаб из курицы с кинзой",
+        "price": 470,
+        "weight": 190,
+        "photo": "lyulya-kebab-iz-kuricy-s-kinzoy"
+      }
+    ]
+  },
+  {
+    "id": "supy",
+    "title": "Супы",
+    "items": [
+      {
+        "name": "Харчо с нежной телятиной",
+        "price": 510,
+        "weight": 380,
+        "photo": "harcho-s-nezhnoy-telyatinoy"
+      },
+      {
+        "name": "Солянка по-грузински",
+        "price": 480,
+        "weight": 330,
+        "photo": "solyanka-po-gruzinski"
+      }
+    ]
+  }
+]

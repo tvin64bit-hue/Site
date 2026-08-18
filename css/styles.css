@@ -754,8 +754,47 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
     linear-gradient(to bottom, var(--deep), var(--pine) 45%, var(--moss));
 }
 
+/* Переключатель категорий. В ТЗ §5 меню — тизер на 3–4 блюда; здесь оно
+   выросло до четырёх категорий, потому что появились реальные данные.
+   Раскладка карточек внутри категории осталась ровно по ТЗ. */
+.menu__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block-start: 40px;
+  border-block-end: 1px solid rgba(244, 241, 232, .16);
+}
+.menu__tab {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 16px 24px;
+  font-size: var(--f-small);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--on-dark-muted);
+  white-space: nowrap;
+  transition: color .25s var(--ease);
+}
+.menu__tab::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rose), var(--river));
+  transform: scaleX(0);
+  transition: transform .3s var(--ease);
+}
+.menu__tab:hover,
+.menu__tab[aria-selected="true"] { color: var(--on-dark); }
+.menu__tab[aria-selected="true"]::after { transform: scaleX(1); }
+.menu__tab-count { font-size: 11px; letter-spacing: 0; color: var(--river); opacity: .8; }
+
+.menu__panel { animation: panel-in .3s var(--ease) both; }
+
 .menu__grid {
-  margin-block-start: 56px;
+  margin-block-start: 40px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));   /* ТЗ: 3–4 колонки */
   gap: 32px;                                          /* ТЗ: 32px desktop */
@@ -767,19 +806,23 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
   text-align: center;
 }
 
-/* Резерв под ход параллакса: тарелка ездит внутри своего воздуха и никогда
+/* Резерв под ход параллакса: кадр ездит внутри своего воздуха и никогда
    не наезжает на подпись. Заодно это и есть «воздух» вокруг подачи. */
 .dish__figure {
   position: relative;
-  padding-block: 72px;
+  padding-block: 40px;
   overflow: hidden;
 }
-.dish__figure img {
+.dish__figure picture { display: block; }
+.dish__img {
   width: 100%;
   aspect-ratio: 1 / 1;             /* ТЗ: квадрат 1:1 */
-  object-fit: contain;
-  /* ТЗ: мягкая тень под объектом — «парящая тарелка». */
-  filter: drop-shadow(0 26px 34px rgba(6, 18, 17, .55));
+  object-fit: cover;
+  border-radius: var(--radius);
+  /* ТЗ предлагает drop-shadow для фото на однотонном/прозрачном фоне.
+     Здесь снимки студийные, с деревянным фоном прямо в кадре, поэтому тень
+     кладём на сам плиточный кадр — drop-shadow обводил бы прямоугольник. */
+  box-shadow: 0 26px 40px rgba(6, 18, 17, .5);
 }
 
 .dish .placeholder-badge {
@@ -789,9 +832,10 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
   width: fit-content;
 }
 
-.dish h3 { margin-block-start: 4px; }
-/* ТЗ: от названия блюда до описания — 8px. */
-.dish p { margin-block-start: 8px; color: var(--on-dark-muted); font-size: var(--f-small); line-height: var(--lh-small); }
+.dish__name { margin-block-start: 4px; }
+/* ТЗ: от названия блюда до описания — 8px. Описаний в исходных данных нет
+   (в карточках Яндекс.Еды их не бывает), поэтому здесь — вес порции. */
+.dish__meta { margin-block-start: 8px; color: var(--on-dark-muted); font-size: var(--f-small); line-height: var(--lh-small); }
 .dish__price {
   display: block;
   margin-block-start: auto;
@@ -806,7 +850,7 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
 
 @media (max-width: 1023.98px) {
   .menu__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  .dish__figure { padding-block: 48px; }
+  .dish__figure { padding-block: 28px; }
 }
 @media (max-width: 767.98px) {
   /* ТЗ: на mobile — карусель со свайпом, чтобы не растягивать секцию.
@@ -825,7 +869,17 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
   }
   .menu__grid::-webkit-scrollbar { display: none; }
   .dish { scroll-snap-align: center; }
-  .dish__figure { padding-block: 24px; }
+  .dish__figure { padding-block: 16px; }
+  /* ТЗ: табы горизонтальным скроллом, без переноса строк. */
+  .menu__tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--pad));
+    padding-inline: var(--pad);
+  }
+  .menu__tabs::-webkit-scrollbar { display: none; }
+  .menu__tab { padding: 14px 18px; }
   .menu__cta .btn { width: 100%; }
 }
 

@@ -7,9 +7,14 @@
   "scripts": {
     "build:images": "node tools/build-images.mjs",
     "build:placeholders": "node tools/build-placeholders.mjs",
-    "build:assets": "npm run build:images && npm run build:placeholders"
+    "build:assets": "npm run build:images && npm run build:placeholders",
+    "extract:dishes": "node tools/extract-dish-photos.mjs",
+    "build:menu": "node tools/build-menu-html.mjs"
   },
   "devDependencies": {
+    "@napi-rs/canvas": "^0.1.60",
+    "pdfjs-dist": "^4.10.38",
+    "playwright": "^1.62.1",
     "sharp": "^0.35.3"
   }
 }

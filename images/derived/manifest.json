@@ -154,5 +154,149 @@
       1440
     ],
     "placeholder": "#080808"
+  },
+  "dish-hachapuri-po-adzharski-s-bekonom": {
+    "source": "dishes/hachapuri-po-adzharski-s-bekonom.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#a88868"
+  },
+  "dish-hachapuri-po-adzharski": {
+    "source": "dishes/hachapuri-po-adzharski.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#d8a858"
+  },
+  "dish-hachapuri-po-imeretinski": {
+    "source": "dishes/hachapuri-po-imeretinski.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#d8a858"
+  },
+  "dish-hachapuri-po-megrelski-s-kopchenym-suluguni": {
+    "source": "dishes/hachapuri-po-megrelski-s-kopchenym-suluguni.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#e8b878"
+  },
+  "dish-hachapuri-s-grushey-i-syrom-gorgonzola": {
+    "source": "dishes/hachapuri-s-grushey-i-syrom-gorgonzola.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#e8b878"
+  },
+  "dish-hachapuri-s-mramornoy-gorgonzoloy": {
+    "source": "dishes/hachapuri-s-mramornoy-gorgonzoloy.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#b88868"
+  },
+  "dish-harcho-s-nezhnoy-telyatinoy": {
+    "source": "dishes/harcho-s-nezhnoy-telyatinoy.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#c8b8a8"
+  },
+  "dish-hinkali-c-telyatinoy": {
+    "source": "dishes/hinkali-c-telyatinoy.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#c8b8a8"
+  },
+  "dish-lyulya-kebab-iz-kuricy-s-kinzoy": {
+    "source": "dishes/lyulya-kebab-iz-kuricy-s-kinzoy.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#b88868"
+  },
+  "dish-puri": {
+    "source": "dishes/puri.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#e8c8a8"
+  },
+  "dish-shashlyk-iz-sochnoy-svininy": {
+    "source": "dishes/shashlyk-iz-sochnoy-svininy.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#a87868"
+  },
+  "dish-solyanka-po-gruzinski": {
+    "source": "dishes/solyanka-po-gruzinski.jpg",
+    "width": 592,
+    "height": 592,
+    "ratio": 1,
+    "widths": [
+      300,
+      460,
+      592
+    ],
+    "placeholder": "#b89888"
   }
 }

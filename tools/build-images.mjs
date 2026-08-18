@@ -7,7 +7,7 @@
  * Запуск:  npm install --no-save sharp && node tools/build-images.mjs
  */
 import sharp from 'sharp';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -31,12 +31,22 @@ const SOURCES = [
   { file: 'stunning-restaurant-interior-design-View06.jpg',             slug: 'gallery-sunburst',   widths: [480, 768, 1024, 1440] },
 ];
 
+/* Фотографии блюд лежат отдельно: они не из исходного набора интерьеров,
+   а извлечены из PDF-выгрузки меню (tools/extract-dish-photos.mjs).
+   Оригиналы 592x592, в сетке меню карточка занимает ~300px. */
+const DISH_WIDTHS = [300, 460, 592];
+
 const hex = (c) => '#' + [c.r, c.g, c.b].map((v) => v.toString(16).padStart(2, '0')).join('');
 
 await mkdir(out, { recursive: true });
 const manifest = {};
 
-for (const { file, slug, widths } of SOURCES) {
+const dishDir = path.join(src, 'dishes');
+const dishFiles = (await readdir(dishDir).catch(() => []))
+  .filter((f) => f.endsWith('.jpg'))
+  .map((f) => ({ file: path.join('dishes', f), slug: 'dish-' + path.basename(f, '.jpg'), widths: DISH_WIDTHS }));
+
+for (const { file, slug, widths } of [...SOURCES, ...dishFiles]) {
   const input = path.join(src, file);
   const image = sharp(input, { limitInputPixels: false });
   const meta = await image.metadata();

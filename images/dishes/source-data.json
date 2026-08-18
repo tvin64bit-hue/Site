@@ -1,0 +1,167 @@
+[
+  {
+    "slug": "lyulya-kebab-iz-kuricy-s-kinzoy",
+    "name": "Люля-кебаб из курицы с кинзой",
+    "price": 470,
+    "weight": 190,
+    "rating": {
+      "percent": 87,
+      "votes": 15
+    },
+    "width": 592,
+    "height": 592,
+    "source": "39fde1de-1.pdf",
+    "page": 2
+  },
+  {
+    "slug": "puri",
+    "name": "Пури",
+    "price": 100,
+    "weight": 120,
+    "rating": {
+      "percent": 80,
+      "votes": 5
+    },
+    "width": 592,
+    "height": 592,
+    "source": "a3089d31-2.pdf",
+    "page": 4
+  },
+  {
+    "slug": "solyanka-po-gruzinski",
+    "name": "Солянка по-грузински",
+    "price": 480,
+    "weight": 330,
+    "rating": {
+      "percent": 58,
+      "votes": 12
+    },
+    "width": 592,
+    "height": 592,
+    "source": "39fde1de-1.pdf",
+    "page": 2
+  },
+  {
+    "slug": "harcho-s-nezhnoy-telyatinoy",
+    "name": "Харчо с нежной телятиной",
+    "price": 510,
+    "weight": 380,
+    "rating": {
+      "percent": 90,
+      "votes": 10
+    },
+    "width": 592,
+    "height": 592,
+    "source": "39fde1de-1.pdf",
+    "page": 2
+  },
+  {
+    "slug": "hachapuri-po-adzharski",
+    "name": "Хачапури по-аджарски",
+    "price": 480,
+    "weight": 300,
+    "rating": {
+      "percent": 87,
+      "votes": 60
+    },
+    "width": 592,
+    "height": 592,
+    "source": "39fde1de-1.pdf",
+    "page": 1
+  },
+  {
+    "slug": "hachapuri-po-adzharski-s-bekonom",
+    "name": "Хачапури по-аджарски с беконом",
+    "price": 460,
+    "weight": 300,
+    "rating": {
+      "percent": 63,
+      "votes": 19
+    },
+    "width": 592,
+    "height": 592,
+    "source": "a3089d31-2.pdf",
+    "page": 3
+  },
+  {
+    "slug": "hachapuri-po-imeretinski",
+    "name": "Хачапури по-имеретински",
+    "price": 500,
+    "weight": null,
+    "rating": null,
+    "width": 592,
+    "height": 592,
+    "source": "a3089d31-2.pdf",
+    "page": 3
+  },
+  {
+    "slug": "hachapuri-po-megrelski-s-kopchenym-suluguni",
+    "name": "Хачапури по-мегрельски с копченым сулугуни",
+    "price": 530,
+    "weight": 430,
+    "rating": {
+      "percent": 75,
+      "votes": 4
+    },
+    "width": 592,
+    "height": 592,
+    "source": "a3089d31-2.pdf",
+    "page": 4
+  },
+  {
+    "slug": "hachapuri-s-grushey-i-syrom-gorgonzola",
+    "name": "Хачапури с грушей и сыром Горгонзола",
+    "price": 530,
+    "weight": 380,
+    "rating": {
+      "percent": 83,
+      "votes": 6
+    },
+    "width": 592,
+    "height": 592,
+    "source": "a3089d31-2.pdf",
+    "page": 3
+  },
+  {
+    "slug": "hachapuri-s-mramornoy-gorgonzoloy",
+    "name": "Хачапури с мраморной горгонзолой",
+    "price": 520,
+    "weight": 305,
+    "rating": {
+      "percent": 86,
+      "votes": 7
+    },
+    "width": 592,
+    "height": 592,
+    "source": "a3089d31-2.pdf",
+    "page": 3
+  },
+  {
+    "slug": "hinkali-c-telyatinoy",
+    "name": "Хинкали c телятиной",
+    "price": 115,
+    "weight": 90,
+    "rating": {
+      "percent": 100,
+      "votes": 20
+    },
+    "width": 592,
+    "height": 592,
+    "source": "39fde1de-1.pdf",
+    "page": 1
+  },
+  {
+    "slug": "shashlyk-iz-sochnoy-svininy",
+    "name": "Шашлык из сочной свинины",
+    "price": 550,
+    "weight": 190,
+    "rating": {
+      "percent": 62,
+      "votes": 13
+    },
+    "width": 592,
+    "height": 592,
+    "source": "39fde1de-1.pdf",
+    "page": 2
+  }
+]

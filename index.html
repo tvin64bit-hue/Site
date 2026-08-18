@@ -347,7 +347,7 @@
       </div>
 
       <!-- Карточки зон, speed factor 1.0 — не двигаются, только приподняты тенью -->
-      <div class="spaces__panel" role="tabpanel" id="panel-hall" aria-labelledby="tab-hall" tabindex="0" data-active="true" data-parallax data-speed="1">
+      <div class="spaces__panel" role="tabpanel" id="panel-hall" aria-labelledby="tab-hall" tabindex="0" data-parallax data-speed="1">
         <h3>Зал</h3>
         <p>Сердце ресторана: дубовые панели, открытая кухня и вид на угольный под.
           Здесь слышно, как работает огонь.</p>
@@ -388,65 +388,270 @@
 
   <div class="container">
     <p class="eyebrow">Меню</p>
-    <h2 id="menu-title">Что сегодня на углях</h2>
+    <h2 id="menu-title">Хачапури, хинкали<br>и всё, что с мангала</h2>
 
-    <!-- Фото блюд: speed factor 1.15 с разбросом ±20px между соседями,
-         чтобы тарелки не всплывали строго синхронно (ТЗ §5). -->
-    <div class="menu__grid">
+    <!-- Разметка ниже собирается из data/menu.json скриптом
+         tools/build-menu-html.mjs. Правки вносить в данные, не сюда. -->
+    <!-- menu:start -->
+      <div class="menu__tabs" role="tablist" aria-label="Категории меню">
+        <button class="menu__tab" role="tab" id="mtab-hachapuri" aria-controls="mpanel-hachapuri"
+                aria-selected="true" tabindex="0">Хачапури<span class="menu__tab-count">10</span></button>
+        <button class="menu__tab" role="tab" id="mtab-hinkali" aria-controls="mpanel-hinkali"
+                aria-selected="false" tabindex="-1">Хинкали<span class="menu__tab-count">2</span></button>
+        <button class="menu__tab" role="tab" id="mtab-mangal" aria-controls="mpanel-mangal"
+                aria-selected="false" tabindex="-1">Мангал<span class="menu__tab-count">2</span></button>
+        <button class="menu__tab" role="tab" id="mtab-supy" aria-controls="mpanel-supy"
+                aria-selected="false" tabindex="-1">Супы<span class="menu__tab-count">2</span></button>
+      </div>
 
-      <article class="dish" data-reveal>
-        <figure class="dish__figure">
-          <img src="images/placeholders/dish-01.svg" width="800" height="800"
-               loading="lazy" decoding="async"
-               data-parallax data-speed="1.15" data-offset="-20" data-anchor="parent" data-amp="0.4"
-               alt="Временная заливка вместо фотографии: филе форели на светлой керамике">
-          <span class="placeholder-badge">Фото готовится</span>
-        </figure>
-        <h3>Форель на кедровых углях</h3>
-        <p>Целое филе, ольховый дым, лимонное масло и хрустящая кожа.</p>
-        <span class="dish__price">1 480 ₽</span>
-      </article>
+      <div class="menu__panel" role="tabpanel" id="mpanel-hachapuri" aria-labelledby="mtab-hachapuri" tabindex="0">
+        <div class="menu__grid">
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-adzharski-300.avif 300w, images/derived/dish-hachapuri-po-adzharski-460.avif 460w, images/derived/dish-hachapuri-po-adzharski-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-adzharski-300.webp 300w, images/derived/dish-hachapuri-po-adzharski-460.webp 460w, images/derived/dish-hachapuri-po-adzharski-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-hachapuri-po-adzharski-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-adzharski-300.jpg 300w, images/derived/dish-hachapuri-po-adzharski-460.jpg 460w, images/derived/dish-hachapuri-po-adzharski-592.jpg 592w"
+                   width="592" height="592" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="-20" data-anchor="parent" data-amp="0.4"
+                   alt="Хачапури по-аджарски">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Хачапури по-аджарски</h3>
+            <p class="dish__meta">300 г</p>
+            <span class="dish__price">480 ₽</span>
+          </article>
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-adzharski-s-bekonom-300.avif 300w, images/derived/dish-hachapuri-po-adzharski-s-bekonom-460.avif 460w, images/derived/dish-hachapuri-po-adzharski-s-bekonom-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-adzharski-s-bekonom-300.webp 300w, images/derived/dish-hachapuri-po-adzharski-s-bekonom-460.webp 460w, images/derived/dish-hachapuri-po-adzharski-s-bekonom-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-hachapuri-po-adzharski-s-bekonom-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-adzharski-s-bekonom-300.jpg 300w, images/derived/dish-hachapuri-po-adzharski-s-bekonom-460.jpg 460w, images/derived/dish-hachapuri-po-adzharski-s-bekonom-592.jpg 592w"
+                   width="592" height="592" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="20" data-anchor="parent" data-amp="0.4"
+                   alt="Хачапури по-аджарски с беконом">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Хачапури по-аджарски с беконом</h3>
+            <p class="dish__meta">300 г</p>
+            <span class="dish__price">460 ₽</span>
+          </article>
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-300.avif 300w, images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-460.avif 460w, images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-300.webp 300w, images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-460.webp 460w, images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-300.jpg 300w, images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-460.jpg 460w, images/derived/dish-hachapuri-s-mramornoy-gorgonzoloy-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="-10" data-anchor="parent" data-amp="0.4"
+                   alt="Хачапури с мраморной горгонзолой">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Хачапури с мраморной горгонзолой</h3>
+            <p class="dish__meta">305 г</p>
+            <span class="dish__price">520 ₽</span>
+          </article>
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-300.avif 300w, images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-460.avif 460w, images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-300.webp 300w, images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-460.webp 460w, images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-300.jpg 300w, images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-460.jpg 460w, images/derived/dish-hachapuri-s-grushey-i-syrom-gorgonzola-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="15" data-anchor="parent" data-amp="0.4"
+                   alt="Хачапури с грушей и сыром Горгонзола">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Хачапури с грушей и сыром Горгонзола</h3>
+            <p class="dish__meta">380 г</p>
+            <span class="dish__price">530 ₽</span>
+          </article>
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-imeretinski-300.avif 300w, images/derived/dish-hachapuri-po-imeretinski-460.avif 460w, images/derived/dish-hachapuri-po-imeretinski-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-imeretinski-300.webp 300w, images/derived/dish-hachapuri-po-imeretinski-460.webp 460w, images/derived/dish-hachapuri-po-imeretinski-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-hachapuri-po-imeretinski-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-imeretinski-300.jpg 300w, images/derived/dish-hachapuri-po-imeretinski-460.jpg 460w, images/derived/dish-hachapuri-po-imeretinski-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="-20" data-anchor="parent" data-amp="0.4"
+                   alt="Хачапури по-имеретински">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Хачапури по-имеретински</h3>
+            <p class="dish__meta">380 г</p>
+            <span class="dish__price">500 ₽</span>
+          </article>
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-300.avif 300w, images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-460.avif 460w, images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-300.webp 300w, images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-460.webp 460w, images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-300.jpg 300w, images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-460.jpg 460w, images/derived/dish-hachapuri-po-megrelski-s-kopchenym-suluguni-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="20" data-anchor="parent" data-amp="0.4"
+                   alt="Хачапури по-мегрельски с копчёным сулугуни">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Хачапури по-мегрельски с копчёным сулугуни</h3>
+            <p class="dish__meta">430 г</p>
+            <span class="dish__price">530 ₽</span>
+          </article>
+          <article class="dish" data-pending="true">
+            <figure class="dish__figure">
+              <img class="dish__img" src="images/placeholders/dish-pending.svg" width="800" height="800"
+                 loading="lazy" decoding="async"
+                 data-parallax data-speed="1.15" data-offset="-10" data-anchor="parent" data-amp="0.4"
+                 alt="Временная заливка вместо фотографии: пустая керамическая тарелка">
+            <span class="placeholder-badge">Фото готовится</span>
+            </figure>
+            <h3 class="dish__name">Хачапури по-мегрельски с молочным сулугуни</h3>
+            <p class="dish__meta">430 г</p>
+            <span class="dish__price">530 ₽</span>
+          </article>
+          <article class="dish" data-pending="true">
+            <figure class="dish__figure">
+              <img class="dish__img" src="images/placeholders/dish-pending.svg" width="800" height="800"
+                 loading="lazy" decoding="async"
+                 data-parallax data-speed="1.15" data-offset="15" data-anchor="parent" data-amp="0.4"
+                 alt="Временная заливка вместо фотографии: пустая керамическая тарелка">
+            <span class="placeholder-badge">Фото готовится</span>
+            </figure>
+            <h3 class="dish__name">Хачапури Пепперони</h3>
+            <p class="dish__meta">570 г</p>
+            <span class="dish__price">950 ₽</span>
+          </article>
+          <article class="dish" data-pending="true">
+            <figure class="dish__figure">
+              <img class="dish__img" src="images/placeholders/dish-pending.svg" width="800" height="800"
+                 loading="lazy" decoding="async"
+                 data-parallax data-speed="1.15" data-offset="-20" data-anchor="parent" data-amp="0.4"
+                 alt="Временная заливка вместо фотографии: пустая керамическая тарелка">
+            <span class="placeholder-badge">Фото готовится</span>
+            </figure>
+            <h3 class="dish__name">Хачапури Горский Три сыра</h3>
+            <p class="dish__meta">740 г</p>
+            <span class="dish__price">990 ₽</span>
+          </article>
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-puri-300.avif 300w, images/derived/dish-puri-460.avif 460w, images/derived/dish-puri-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-puri-300.webp 300w, images/derived/dish-puri-460.webp 460w, images/derived/dish-puri-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-puri-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-puri-300.jpg 300w, images/derived/dish-puri-460.jpg 460w, images/derived/dish-puri-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="20" data-anchor="parent" data-amp="0.4"
+                   alt="Пури">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Пури</h3>
+            <p class="dish__meta">120 г</p>
+            <span class="dish__price">100 ₽</span>
+          </article>
+        </div>
+      </div>
 
-      <article class="dish" data-reveal data-reveal-delay="1">
-        <figure class="dish__figure">
-          <img src="images/placeholders/dish-02.svg" width="800" height="800"
-               loading="lazy" decoding="async"
-               data-parallax data-speed="1.15" data-offset="20" data-anchor="parent" data-amp="0.4"
-               alt="Временная заливка вместо фотографии: уха в глубокой миске">
-          <span class="placeholder-badge">Фото готовится</span>
-        </figure>
-        <h3>Уха из горной форели</h3>
-        <p>Двойная закладка, печёный лук, укропное масло и ржаной сухарь.</p>
-        <span class="dish__price">790 ₽</span>
-      </article>
+      <div class="menu__panel" role="tabpanel" id="mpanel-hinkali" aria-labelledby="mtab-hinkali" hidden tabindex="0">
+        <div class="menu__grid">
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hinkali-c-telyatinoy-300.avif 300w, images/derived/dish-hinkali-c-telyatinoy-460.avif 460w, images/derived/dish-hinkali-c-telyatinoy-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hinkali-c-telyatinoy-300.webp 300w, images/derived/dish-hinkali-c-telyatinoy-460.webp 460w, images/derived/dish-hinkali-c-telyatinoy-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-hinkali-c-telyatinoy-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-hinkali-c-telyatinoy-300.jpg 300w, images/derived/dish-hinkali-c-telyatinoy-460.jpg 460w, images/derived/dish-hinkali-c-telyatinoy-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="-20" data-anchor="parent" data-amp="0.4"
+                   alt="Хинкали с телятиной">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Хинкали с телятиной</h3>
+            <p class="dish__meta">90 г</p>
+            <span class="dish__price">115 ₽</span>
+          </article>
+          <article class="dish" data-pending="true">
+            <figure class="dish__figure">
+              <img class="dish__img" src="images/placeholders/dish-pending.svg" width="800" height="800"
+                 loading="lazy" decoding="async"
+                 data-parallax data-speed="1.15" data-offset="20" data-anchor="parent" data-amp="0.4"
+                 alt="Временная заливка вместо фотографии: пустая керамическая тарелка">
+            <span class="placeholder-badge">Фото готовится</span>
+            </figure>
+            <h3 class="dish__name">Хинкали с двумя видами сыра, томатами и зеленью</h3>
+            <p class="dish__meta">90 г</p>
+            <span class="dish__price">125 ₽</span>
+          </article>
+        </div>
+      </div>
 
-      <article class="dish" data-reveal data-reveal-delay="2">
-        <figure class="dish__figure">
-          <img src="images/placeholders/dish-03.svg" width="800" height="800"
-               loading="lazy" decoding="async"
-               data-parallax data-speed="1.15" data-offset="-10" data-anchor="parent" data-amp="0.4"
-               alt="Временная заливка вместо фотографии: тартар кольцом с яблочными лепестками">
-          <span class="placeholder-badge">Фото готовится</span>
-        </figure>
-        <h3>Тартар с зелёным яблоком</h3>
-        <p>Ручная рубка, каперсы, эстрагон и тонкие пластины антоновки.</p>
-        <span class="dish__price">1 120 ₽</span>
-      </article>
+      <div class="menu__panel" role="tabpanel" id="mpanel-mangal" aria-labelledby="mtab-mangal" hidden tabindex="0">
+        <div class="menu__grid">
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-shashlyk-iz-sochnoy-svininy-300.avif 300w, images/derived/dish-shashlyk-iz-sochnoy-svininy-460.avif 460w, images/derived/dish-shashlyk-iz-sochnoy-svininy-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-shashlyk-iz-sochnoy-svininy-300.webp 300w, images/derived/dish-shashlyk-iz-sochnoy-svininy-460.webp 460w, images/derived/dish-shashlyk-iz-sochnoy-svininy-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-shashlyk-iz-sochnoy-svininy-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-shashlyk-iz-sochnoy-svininy-300.jpg 300w, images/derived/dish-shashlyk-iz-sochnoy-svininy-460.jpg 460w, images/derived/dish-shashlyk-iz-sochnoy-svininy-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="-20" data-anchor="parent" data-amp="0.4"
+                   alt="Шашлык из сочной свинины">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Шашлык из сочной свинины</h3>
+            <p class="dish__meta">190 г</p>
+            <span class="dish__price">550 ₽</span>
+          </article>
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-300.avif 300w, images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-460.avif 460w, images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-300.webp 300w, images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-460.webp 460w, images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-300.jpg 300w, images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-460.jpg 460w, images/derived/dish-lyulya-kebab-iz-kuricy-s-kinzoy-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="20" data-anchor="parent" data-amp="0.4"
+                   alt="Люля-кебаб из курицы с кинзой">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Люля-кебаб из курицы с кинзой</h3>
+            <p class="dish__meta">190 г</p>
+            <span class="dish__price">470 ₽</span>
+          </article>
+        </div>
+      </div>
 
-      <article class="dish" data-reveal data-reveal-delay="3">
-        <figure class="dish__figure">
-          <img src="images/placeholders/dish-04.svg" width="800" height="800"
-               loading="lazy" decoding="async"
-               data-parallax data-speed="1.15" data-offset="15" data-anchor="parent" data-amp="0.4"
-               alt="Временная заливка вместо фотографии: икра форели на ломтях ржаного хлеба">
-          <span class="placeholder-badge">Фото готовится</span>
-        </figure>
-        <h3>Икра форели на ржаном</h3>
-        <p>Своя засолка, сливочное масло и подовый хлеб на закваске.</p>
-        <span class="dish__price">1 640 ₽</span>
-      </article>
-
-    </div>
+      <div class="menu__panel" role="tabpanel" id="mpanel-supy" aria-labelledby="mtab-supy" hidden tabindex="0">
+        <div class="menu__grid">
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-harcho-s-nezhnoy-telyatinoy-300.avif 300w, images/derived/dish-harcho-s-nezhnoy-telyatinoy-460.avif 460w, images/derived/dish-harcho-s-nezhnoy-telyatinoy-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-harcho-s-nezhnoy-telyatinoy-300.webp 300w, images/derived/dish-harcho-s-nezhnoy-telyatinoy-460.webp 460w, images/derived/dish-harcho-s-nezhnoy-telyatinoy-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-harcho-s-nezhnoy-telyatinoy-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-harcho-s-nezhnoy-telyatinoy-300.jpg 300w, images/derived/dish-harcho-s-nezhnoy-telyatinoy-460.jpg 460w, images/derived/dish-harcho-s-nezhnoy-telyatinoy-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="-20" data-anchor="parent" data-amp="0.4"
+                   alt="Харчо с нежной телятиной">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Харчо с нежной телятиной</h3>
+            <p class="dish__meta">380 г</p>
+            <span class="dish__price">510 ₽</span>
+          </article>
+          <article class="dish">
+            <figure class="dish__figure">
+              <picture>
+              <source type="image/avif" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-solyanka-po-gruzinski-300.avif 300w, images/derived/dish-solyanka-po-gruzinski-460.avif 460w, images/derived/dish-solyanka-po-gruzinski-592.avif 592w">
+              <source type="image/webp" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-solyanka-po-gruzinski-300.webp 300w, images/derived/dish-solyanka-po-gruzinski-460.webp 460w, images/derived/dish-solyanka-po-gruzinski-592.webp 592w">
+              <img class="dish__img" src="images/derived/dish-solyanka-po-gruzinski-460.jpg" sizes="(max-width: 767px) 76vw, (max-width: 1023px) 44vw, 306px" srcset="images/derived/dish-solyanka-po-gruzinski-300.jpg 300w, images/derived/dish-solyanka-po-gruzinski-460.jpg 460w, images/derived/dish-solyanka-po-gruzinski-592.jpg 592w"
+                   width="592" height="592" loading="lazy" decoding="async"
+                   data-parallax data-speed="1.15" data-offset="20" data-anchor="parent" data-amp="0.4"
+                   alt="Солянка по-грузински">
+            </picture>
+            </figure>
+            <h3 class="dish__name">Солянка по-грузински</h3>
+            <p class="dish__meta">330 г</p>
+            <span class="dish__price">480 ₽</span>
+          </article>
+        </div>
+      </div>
+      <!-- menu:end -->
 
     <div class="menu__cta">
       <a class="btn btn--solid" href="#menu">Смотреть меню целиком</a>

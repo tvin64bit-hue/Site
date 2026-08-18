@@ -2,7 +2,7 @@
  * Re Forel — генератор временных заливок для блоков, под которые нет фотографии.
  *
  * Закрывает две реальные дыры в наборе ассетов:
- *   • §5 «Меню» — фотографий блюд нет вообще        -> dish-01..04.svg
+ *   • §5 «Меню» — у четырёх позиций нет снимка      -> dish-pending.svg
  *   • §4 таб «Терраса» — нет ни одного уличного кадра -> terrace.svg
  * Плюс два чисто декоративных слоя, которые фотографией и не должны быть:
  *   • particles.svg — слой «частиц света» в hero (ТЗ §1, speed factor 1.25)
@@ -42,135 +42,45 @@ const grainFilter = (id, freq, octaves) => `
 
 /* ------------------------------------------------------------------ блюда */
 
-/**
- * Каждое блюдо — своя композиция на керамике: разная посуда, разная палитра,
- * разная геометрия. Формы абстрактные: это заливка, а не рисунок еды.
- */
-const DISHES = [
-  {
-    id: 'dish-01', plate: C.paper, rim: '#DED5C2', vessel: 'plate',
-    forms: (r) => {
-      const parts = [];
-      // Филе: вытянутый скруглённый корпус + косые линии волокон.
-      parts.push(`<rect x="255" y="330" width="290" height="150" rx="74" fill="${C.rose}" opacity=".92"/>`);
-      parts.push(`<rect x="255" y="330" width="290" height="150" rx="74" fill="url(#fileSheen)"/>`);
-      for (let i = 0; i < 7; i++) {
-        const x = 292 + i * 33;
-        parts.push(`<path d="M${x} 348 q10 56 -6 114" stroke="${C.paper}" stroke-opacity=".34" stroke-width="3" fill="none" stroke-linecap="round"/>`);
-      }
-      // Обугленная кромка — блюдо готовится на углях.
-      parts.push(`<path d="M262 424 q138 34 276 -6" stroke="${C.ink}" stroke-opacity=".38" stroke-width="9" fill="none" stroke-linecap="round"/>`);
-      for (let i = 0; i < 9; i++) {
-        parts.push(`<circle cx="${n(230 + r() * 340)}" cy="${n(300 + r() * 210)}" r="${n(3 + r() * 5)}" fill="${C.moss}" opacity=".6"/>`);
-      }
-      return parts.join('');
-    },
-  },
-  {
-    id: 'dish-02', plate: C.paper, rim: '#D3C9B4', vessel: 'bowl',
-    forms: (r) => {
-      const parts = [];
-      // Бульон: заливка чаши + концентрические блики.
-      parts.push(`<circle cx="400" cy="400" r="152" fill="${C.brass}" opacity=".78"/>`);
-      parts.push(`<circle cx="400" cy="400" r="152" fill="url(#brothSheen)"/>`);
-      for (let i = 0; i < 3; i++) {
-        parts.push(`<circle cx="400" cy="400" r="${58 + i * 40}" fill="none" stroke="${C.paper}" stroke-opacity=".2" stroke-width="2"/>`);
-      }
-      for (let i = 0; i < 11; i++) {
-        const a = r() * Math.PI * 2, rad = 30 + r() * 108;
-        parts.push(`<circle cx="${n(400 + Math.cos(a) * rad)}" cy="${n(400 + Math.sin(a) * rad)}" r="${n(5 + r() * 9)}" fill="${i % 3 ? C.rose : C.moss}" opacity=".72"/>`);
-      }
-      parts.push(`<path d="M330 352 q34 -40 72 -14 q40 26 76 -10" stroke="${C.paper}" stroke-opacity=".45" stroke-width="4" fill="none" stroke-linecap="round"/>`);
-      return parts.join('');
-    },
-  },
-  {
-    id: 'dish-03', plate: C.paper, rim: '#DAD1BE', vessel: 'plate',
-    forms: (r) => {
-      const parts = [];
-      // Тартар: цилиндр из кольцевой формы, вид сверху под лёгким углом.
-      parts.push(`<ellipse cx="400" cy="430" rx="118" ry="88" fill="${C.rose}" opacity=".9"/>`);
-      parts.push(`<ellipse cx="400" cy="404" rx="118" ry="88" fill="${C.rose}"/>`);
-      parts.push(`<ellipse cx="400" cy="404" rx="118" ry="88" fill="url(#tartareSheen)"/>`);
-      parts.push(`<ellipse cx="400" cy="404" rx="118" ry="88" fill="none" stroke="${C.ink}" stroke-opacity=".12" stroke-width="2"/>`);
-      for (let i = 0; i < 16; i++) {
-        const a = r() * Math.PI * 2, rad = r() * 96;
-        parts.push(`<circle cx="${n(400 + Math.cos(a) * rad)}" cy="${n(404 + Math.sin(a) * rad * 0.74)}" r="${n(4 + r() * 6)}" fill="${i % 2 ? C.river : '#A9BE72'}" opacity=".8"/>`);
-      }
-      // Веер из тонких пластин яблока сбоку.
-      for (let i = 0; i < 5; i++) {
-        parts.push(`<ellipse cx="${556 + i * 4}" cy="${372 + i * 22}" rx="46" ry="11" fill="${C.paper}" stroke="${C.river}" stroke-opacity=".5" stroke-width="2" transform="rotate(${-16 + i * 8} ${556 + i * 4} ${372 + i * 22})"/>`);
-      }
-      return parts.join('');
-    },
-  },
-  {
-    id: 'dish-04', plate: '#2A2723', rim: '#3A362F', vessel: 'slate',
-    forms: (r) => {
-      const parts = [];
-      // Икра на ржаном: три ломтя, на каждом россыпь икринок.
-      const slices = [[300, 352], [452, 400], [346, 486]];
-      for (const [cx, cy] of slices) {
-        parts.push(`<rect x="${cx - 66}" y="${cy - 42}" width="132" height="84" rx="14" fill="#6B5233"/>`);
-        parts.push(`<rect x="${cx - 66}" y="${cy - 42}" width="132" height="84" rx="14" fill="url(#ryeSheen)"/>`);
-        parts.push(`<rect x="${cx - 58}" y="${cy - 34}" width="116" height="68" rx="10" fill="${C.paper}" opacity=".9"/>`);
-        for (let i = 0; i < 26; i++) {
-          parts.push(`<circle cx="${n(cx - 50 + r() * 100)}" cy="${n(cy - 26 + r() * 52)}" r="${n(4.5 + r() * 2.5)}" fill="#D9743E" opacity="${n(0.72 + r() * 0.26)}"/>`);
-        }
-        parts.push(`<path d="M${cx - 30} ${cy + 26} q30 12 60 -4" stroke="${C.moss}" stroke-opacity=".7" stroke-width="3" fill="none" stroke-linecap="round"/>`);
-      }
-      return parts.join('');
-    },
-  },
-];
-
-for (const d of DISHES) {
-  const r = rng(d.id.charCodeAt(5) * 9173 + 31);
-  const vessel =
-    d.vessel === 'slate'
-      ? `<rect x="150" y="182" width="500" height="436" rx="26" fill="${d.plate}"/>
-         <rect x="150" y="182" width="500" height="436" rx="26" fill="none" stroke="${d.rim}" stroke-width="6"/>`
-      : `<circle cx="400" cy="400" r="264" fill="${d.rim}" opacity=".55"/>
-         <circle cx="400" cy="400" r="252" fill="${d.plate}"/>
-         <circle cx="400" cy="400" r="252" fill="url(#plateSheen)"/>
-         <circle cx="400" cy="400" r="${d.vessel === 'bowl' ? 176 : 198}" fill="none" stroke="${d.rim}" stroke-width="${d.vessel === 'bowl' ? 10 : 3}" opacity=".85"/>`;
+/* Меню собрано на реальных фотографиях из выгрузки (images/dishes/), но у
+   четырёх позиций снимка нет. Для них — одна нейтральная заглушка: пустая
+   керамика на тонированном фоне, в тон остальным карточкам. Не изображает
+   конкретное блюдо и не притворяется фотографией — поверх стоит бейдж. */
+{
+  const r = rng(6421);
+  const crumbs = Array.from({ length: 18 }, () => {
+    const a = r() * Math.PI * 2, rad = 250 + r() * 120;
+    return `<circle cx="${n(400 + Math.cos(a) * rad)}" cy="${n(400 + Math.sin(a) * rad)}" r="${n(2 + r() * 4)}" fill="${C.ink}" opacity="${n(0.05 + r() * 0.07)}"/>`;
+  }).join('');
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img">
   <defs>
+    <linearGradient id="cloth" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DCD3C0"/>
+      <stop offset="1" stop-color="#C8BCA4"/>
+    </linearGradient>
     <radialGradient id="plateSheen" cx="36%" cy="28%" r="78%">
-      <stop offset="0" stop-color="#ffffff" stop-opacity=".85"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="fileSheen" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity=".38"/>
-      <stop offset="1" stop-color="${C.ink}" stop-opacity=".22"/>
-    </linearGradient>
-    <radialGradient id="brothSheen" cx="38%" cy="30%" r="72%">
-      <stop offset="0" stop-color="#ffffff" stop-opacity=".5"/>
-      <stop offset="1" stop-color="${C.ink}" stop-opacity=".18"/>
-    </radialGradient>
-    <linearGradient id="tartareSheen" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity=".34"/>
-      <stop offset="1" stop-color="${C.ink}" stop-opacity=".2"/>
-    </linearGradient>
-    <linearGradient id="ryeSheen" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity=".2"/>
-      <stop offset="1" stop-color="${C.ink}" stop-opacity=".3"/>
-    </linearGradient>
     ${grainFilter('dishGrain', '0.9', '3')}
-    <clipPath id="vesselClip">${d.vessel === 'slate'
-      ? `<rect x="150" y="182" width="500" height="436" rx="26"/>`
-      : `<circle cx="400" cy="400" r="264"/>`}</clipPath>
   </defs>
-  <g>${vessel}</g>
-  <g>${d.forms(r)}</g>
-  <g style="mix-blend-mode:multiply" opacity=".07">
-    <rect width="800" height="800" filter="url(#dishGrain)" clip-path="url(#vesselClip)"/>
-  </g>
+
+  <rect width="800" height="800" fill="url(#cloth)"/>
+  <g>${crumbs}</g>
+
+  <ellipse cx="400" cy="430" rx="258" ry="248" fill="${C.ink}" opacity=".14"/>
+  <circle cx="400" cy="400" r="264" fill="#D3C9B4"/>
+  <circle cx="400" cy="400" r="252" fill="${C.paper}"/>
+  <circle cx="400" cy="400" r="252" fill="url(#plateSheen)"/>
+  <circle cx="400" cy="400" r="198" fill="none" stroke="#DED5C2" stroke-width="3"/>
+  <circle cx="400" cy="400" r="150" fill="none" stroke="#DED5C2" stroke-width="1.5" opacity=".7"/>
+
+  <rect width="800" height="800" filter="url(#dishGrain)" opacity=".08" style="mix-blend-mode:multiply"/>
 </svg>
 `;
-  await writeFile(path.join(out, `${d.id}.svg`), svg);
-  console.log(`${d.id}.svg`);
+  await writeFile(path.join(out, 'dish-pending.svg'), svg);
+  console.log('dish-pending.svg');
 }
 
 /* --------------------------------------------------------------- терраса */
