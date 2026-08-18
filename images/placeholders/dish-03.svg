@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img">
+  <defs>
+    <radialGradient id="plateSheen" cx="36%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fileSheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#0C1F1E" stop-opacity=".22"/>
+    </linearGradient>
+    <radialGradient id="brothSheen" cx="38%" cy="30%" r="72%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#0C1F1E" stop-opacity=".18"/>
+    </radialGradient>
+    <linearGradient id="tartareSheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#0C1F1E" stop-opacity=".2"/>
+    </linearGradient>
+    <linearGradient id="ryeSheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#0C1F1E" stop-opacity=".3"/>
+    </linearGradient>
+    
+  <filter id="dishGrain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="n"/>
+    <feColorMatrix in="n" type="saturate" values="0"/>
+  </filter>
+    <clipPath id="vesselClip"><circle cx="400" cy="400" r="264"/></clipPath>
+  </defs>
+  <g><circle cx="400" cy="400" r="264" fill="#DAD1BE" opacity=".55"/>
+         <circle cx="400" cy="400" r="252" fill="#FBF9F4"/>
+         <circle cx="400" cy="400" r="252" fill="url(#plateSheen)"/>
+         <circle cx="400" cy="400" r="198" fill="none" stroke="#DAD1BE" stroke-width="3" opacity=".85"/></g>
+  <g><ellipse cx="400" cy="430" rx="118" ry="88" fill="#C08579" opacity=".9"/><ellipse cx="400" cy="404" rx="118" ry="88" fill="#C08579"/><ellipse cx="400" cy="404" rx="118" ry="88" fill="url(#tartareSheen)"/><ellipse cx="400" cy="404" rx="118" ry="88" fill="none" stroke="#0C1F1E" stroke-opacity=".12" stroke-width="2"/><circle cx="423.62" cy="389.35" r="9.02" fill="#A9BE72" opacity=".8"/><circle cx="390.64" cy="460.67" r="9.32" fill="#8FB3AE" opacity=".8"/><circle cx="480.02" cy="417.37" r="7.52" fill="#A9BE72" opacity=".8"/><circle cx="403.95" cy="408.88" r="7.03" fill="#8FB3AE" opacity=".8"/><circle cx="416.75" cy="370.87" r="5.41" fill="#A9BE72" opacity=".8"/><circle cx="321.67" cy="383" r="7.25" fill="#8FB3AE" opacity=".8"/><circle cx="377.9" cy="407.83" r="5.87" fill="#A9BE72" opacity=".8"/><circle cx="405.21" cy="382.12" r="6.48" fill="#8FB3AE" opacity=".8"/><circle cx="392.42" cy="413.09" r="7.82" fill="#A9BE72" opacity=".8"/><circle cx="395.51" cy="398.73" r="5.8" fill="#8FB3AE" opacity=".8"/><circle cx="444.01" cy="357.03" r="7.27" fill="#A9BE72" opacity=".8"/><circle cx="420.59" cy="448.52" r="5.96" fill="#8FB3AE" opacity=".8"/><circle cx="411.6" cy="411.84" r="7.27" fill="#A9BE72" opacity=".8"/><circle cx="397.74" cy="420.14" r="7.4" fill="#8FB3AE" opacity=".8"/><circle cx="390.6" cy="440.11" r="7.01" fill="#A9BE72" opacity=".8"/><circle cx="385.59" cy="376.72" r="7.93" fill="#8FB3AE" opacity=".8"/><ellipse cx="556" cy="372" rx="46" ry="11" fill="#FBF9F4" stroke="#8FB3AE" stroke-opacity=".5" stroke-width="2" transform="rotate(-16 556 372)"/><ellipse cx="560" cy="394" rx="46" ry="11" fill="#FBF9F4" stroke="#8FB3AE" stroke-opacity=".5" stroke-width="2" transform="rotate(-8 560 394)"/><ellipse cx="564" cy="416" rx="46" ry="11" fill="#FBF9F4" stroke="#8FB3AE" stroke-opacity=".5" stroke-width="2" transform="rotate(0 564 416)"/><ellipse cx="568" cy="438" rx="46" ry="11" fill="#FBF9F4" stroke="#8FB3AE" stroke-opacity=".5" stroke-width="2" transform="rotate(8 568 438)"/><ellipse cx="572" cy="460" rx="46" ry="11" fill="#FBF9F4" stroke="#8FB3AE" stroke-opacity=".5" stroke-width="2" transform="rotate(16 572 460)"/></g>
+  <g style="mix-blend-mode:multiply" opacity=".07">
+    <rect width="800" height="800" filter="url(#dishGrain)" clip-path="url(#vesselClip)"/>
+  </g>
+</svg>

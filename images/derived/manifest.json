@@ -1,0 +1,158 @@
+{
+  "hero-hall": {
+    "source": "6399f785bf3ea32a196ccad5_market-house_Website-Header-1.jpg",
+    "width": 3840,
+    "height": 2560,
+    "ratio": 1.5,
+    "widths": [
+      480,
+      768,
+      1024,
+      1440,
+      1920,
+      2560
+    ],
+    "placeholder": "#281818"
+  },
+  "space-hall": {
+    "source": "Studio_Munge_Leuca_Michael_Stavaridis-(3).webp",
+    "width": 7952,
+    "height": 5304,
+    "ratio": 1.4992,
+    "widths": [
+      480,
+      768,
+      1024,
+      1440,
+      1920
+    ],
+    "placeholder": "#180808"
+  },
+  "space-bar": {
+    "source": "unnamed (3).jpg",
+    "width": 1200,
+    "height": 632,
+    "ratio": 1.8987,
+    "widths": [
+      480,
+      768,
+      1024,
+      1200
+    ],
+    "placeholder": "#080808"
+  },
+  "space-banquet": {
+    "source": "2f25e99f276f1f6902b4a1c572a0b346.jpg",
+    "width": 1010,
+    "height": 720,
+    "ratio": 1.4028,
+    "widths": [
+      480,
+      768,
+      1010
+    ],
+    "placeholder": "#080808"
+  },
+  "about-lounge": {
+    "source": "1b7dd2832265592920812755c676f8d8.jpg",
+    "width": 736,
+    "height": 1104,
+    "ratio": 0.6667,
+    "widths": [
+      368,
+      560,
+      736
+    ],
+    "placeholder": "#381808"
+  },
+  "gallery-loft": {
+    "source": "unnamed.jpg",
+    "width": 1200,
+    "height": 632,
+    "ratio": 1.8987,
+    "widths": [
+      480,
+      768,
+      1024,
+      1200
+    ],
+    "placeholder": "#080808"
+  },
+  "gallery-vintage": {
+    "source": "stunning-restaurant-interior-design-View03.jpg",
+    "width": 1500,
+    "height": 1000,
+    "ratio": 1.5,
+    "widths": [
+      480,
+      768,
+      1024,
+      1440
+    ],
+    "placeholder": "#382828"
+  },
+  "gallery-blooms": {
+    "source": "f157ede6b88a575833d07822bece4b3d.jpg",
+    "width": 736,
+    "height": 1308,
+    "ratio": 0.5627,
+    "widths": [
+      368,
+      560,
+      736
+    ],
+    "placeholder": "#080808"
+  },
+  "gallery-daylight": {
+    "source": "unnamed (1).jpg",
+    "width": 1200,
+    "height": 632,
+    "ratio": 1.8987,
+    "widths": [
+      480,
+      768,
+      1024,
+      1200
+    ],
+    "placeholder": "#080808"
+  },
+  "gallery-service": {
+    "source": "unnamed (4).jpg",
+    "width": 1200,
+    "height": 632,
+    "ratio": 1.8987,
+    "widths": [
+      480,
+      768,
+      1024,
+      1200
+    ],
+    "placeholder": "#080808"
+  },
+  "gallery-banquette": {
+    "source": "unnamed (2).jpg",
+    "width": 1200,
+    "height": 632,
+    "ratio": 1.8987,
+    "widths": [
+      480,
+      768,
+      1024,
+      1200
+    ],
+    "placeholder": "#080808"
+  },
+  "gallery-sunburst": {
+    "source": "stunning-restaurant-interior-design-View06.jpg",
+    "width": 1500,
+    "height": 1000,
+    "ratio": 1.5,
+    "widths": [
+      480,
+      768,
+      1024,
+      1440
+    ],
+    "placeholder": "#080808"
+  }
+}

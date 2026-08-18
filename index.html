@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Re Forel — ресторан северной кухни</title>
+<meta name="description" content="Re Forel — ресторан о форели с холодных горных рек, открытом огне и долгих ужинах. Четыре зала, сезонное меню, своя коптильня.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#123030">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Re Forel — ресторан северной кухни">
+<meta property="og:description" content="Форель, огонь и тишина. Четыре зала, сезонное меню, своя коптильня.">
+<meta property="og:image" content="images/derived/hero-hall-1440.jpg">
+<meta property="og:locale" content="ru_RU">
+
+<!-- Класс .js ставится синхронно: без JS reveal-элементы остаются видимыми,
+     а не залипают в opacity: 0. -->
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- Первый экран грузим приоритетно, всё остальное — лениво. -->
+<link rel="preload" as="image" type="image/avif"
+      href="images/derived/hero-hall-1440.avif"
+      imagesrcset="images/derived/hero-hall-768.avif 768w, images/derived/hero-hall-1024.avif 1024w, images/derived/hero-hall-1440.avif 1440w, images/derived/hero-hall-1920.avif 1920w, images/derived/hero-hall-2560.avif 2560w"
+      imagesizes="100vw" fetchpriority="high">
+
+<script src="js/parallax.js" defer></script>
+<script src="js/ui.js" defer></script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<!-- ===================================================== Шапка ========= -->
+<!-- Шапки в ТЗ нет — добавлена отдельно. Кнопки бронирования на странице
+     нет нигде: телефон везде обычная ссылка tel:. -->
+<header class="site-header" id="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="#hero" aria-label="Re Forel, на главную">Re&nbsp;<em>Forel</em></a>
+
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <ul>
+        <li><a href="#about">О ресторане</a></li>
+        <li><a href="#gallery">Атмосфера</a></li>
+        <li><a href="#spaces">Пространства</a></li>
+        <li><a href="#menu">Меню</a></li>
+        <li><a href="#find">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <a class="site-header__phone" href="tel:+74950000000">+7 495 000-00-00</a>
+
+    <button class="nav-toggle" type="button" id="nav-toggle"
+            aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+      <span class="visually-hidden">Меню навигации</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===================================================== 1. Hero ======== -->
+<section class="hero" id="hero" aria-labelledby="hero-title">
+
+  <!-- Фон, speed factor 0.35 (tablet 0.6, mobile выключен) -->
+  <div class="hero__media p-frame">
+    <div class="p-layer" data-parallax data-speed="0.35" data-speed-tablet="0.6"
+         data-mode="hero" data-amp="1" data-anchor="frame">
+      <picture>
+        <source type="image/avif" sizes="100vw" srcset="
+          images/derived/hero-hall-480.avif 480w,  images/derived/hero-hall-768.avif 768w,
+          images/derived/hero-hall-1024.avif 1024w, images/derived/hero-hall-1440.avif 1440w,
+          images/derived/hero-hall-1920.avif 1920w, images/derived/hero-hall-2560.avif 2560w">
+        <source type="image/webp" sizes="100vw" srcset="
+          images/derived/hero-hall-480.webp 480w,  images/derived/hero-hall-768.webp 768w,
+          images/derived/hero-hall-1024.webp 1024w, images/derived/hero-hall-1440.webp 1440w,
+          images/derived/hero-hall-1920.webp 1920w, images/derived/hero-hall-2560.webp 2560w">
+        <img src="images/derived/hero-hall-1440.jpg" sizes="100vw" srcset="
+          images/derived/hero-hall-480.jpg 480w,  images/derived/hero-hall-768.jpg 768w,
+          images/derived/hero-hall-1024.jpg 1024w, images/derived/hero-hall-1440.jpg 1440w,
+          images/derived/hero-hall-1920.jpg 1920w, images/derived/hero-hall-2560.jpg 2560w"
+          width="3840" height="2560" fetchpriority="high" decoding="async"
+          alt="Вечерний зал Re Forel: латунный занавес под потолком, кирпичная стена и накрытые столы">
+      </picture>
+    </div>
+  </div>
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+  <div class="hero__scrim hero__scrim--top" aria-hidden="true"></div>
+
+  <!-- Декоративный слой «частиц света», speed factor 1.25 (tablet 1.1) -->
+  <div class="hero__particles p-frame" aria-hidden="true">
+    <div class="p-layer" data-parallax data-speed="1.25" data-speed-tablet="1.1"
+         data-mode="hero" data-amp="1" data-anchor="frame"
+         style="background: url('images/placeholders/particles.svg') repeat; background-size: 1600px 900px;"></div>
+  </div>
+
+  <div class="container hero__inner">
+    <!-- Текстовый блок, speed factor 0.85 (tablet 0.9) -->
+    <div class="hero__text" data-parallax data-speed="0.85" data-speed-tablet="0.9"
+         data-mode="hero" data-amp="1">
+      <p class="eyebrow">Ресторан северной кухни</p>
+      <h1 id="hero-title">Форель, огонь<br>и тишина</h1>
+      <p class="lead">Рыба с холодных горных рек, открытый угольный под и ужины,
+        которые некуда торопить. Четыре зала, сезонное меню, своя коптильня.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="#menu">Смотреть меню</a>
+        <a class="btn btn--ghost" href="#find">Как нас найти</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="hero__scroll" aria-hidden="true"><i></i>листайте</p>
+</section>
+
+<!-- ============================================== 2. О ресторане ======== -->
+<section class="section about is-light" id="about" aria-labelledby="about-title">
+
+  <!-- Текстура фона секции, speed factor 0.5 -->
+  <div class="section__bg about__texture" aria-hidden="true">
+    <div class="p-layer" data-parallax data-speed="0.5" data-anchor="parent"
+         style="background: url('images/placeholders/grain.svg') repeat; background-size: 240px 240px;"></div>
+  </div>
+
+  <div class="container grid">
+    <!-- Основной текст: speed factor 1.0 — статичен относительно скролла -->
+    <div class="about__text" data-parallax data-speed="1" data-reveal>
+      <p class="eyebrow">О ресторане</p>
+      <h2 id="about-title">Мы готовим то,<br>что поймали утром</h2>
+
+      <blockquote class="quote">«Форель не терпит спешки — ни в реке, ни на кухне».</blockquote>
+
+      <div class="about__body">
+        <p>Re Forel вырос из маленькой коптильни при форелевом хозяйстве. Мы возим рыбу
+          с трёх горных ферм, где вода не поднимается выше девяти градусов, и разбираем
+          её здесь же, на кухне, — каждое утро, при гостях.</p>
+        <p>Огонь у нас один на весь зал: угольный под, ольха и виноградная лоза.
+          Всё остальное — соль, лимон, сливочное масло и терпение. Мы не прячем рыбу
+          под соусами и не подаём то, чего не поймали на этой неделе.</p>
+        <p>Меню меняется четыре раза в год, а карта вин — когда находим что-то,
+          что стоит того. Спрашивайте у официанта: он пробовал всё.</p>
+      </div>
+    </div>
+
+    <!-- Фото-деталь 3:4, speed factor 1.2 + появление при входе в viewport -->
+    <figure class="about__photo" data-reveal data-reveal-delay="1">
+      <div class="p-frame">
+        <div class="p-layer" data-parallax data-speed="1.2" data-anchor="frame">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 30vw, 420px" srcset="
+              images/derived/about-lounge-368.avif 368w, images/derived/about-lounge-560.avif 560w,
+              images/derived/about-lounge-736.avif 736w">
+            <source type="image/webp" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 30vw, 420px" srcset="
+              images/derived/about-lounge-368.webp 368w, images/derived/about-lounge-560.webp 560w,
+              images/derived/about-lounge-736.webp 736w">
+            <img src="images/derived/about-lounge-560.jpg"
+                 sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 30vw, 420px" srcset="
+              images/derived/about-lounge-368.jpg 368w, images/derived/about-lounge-560.jpg 560w,
+              images/derived/about-lounge-736.jpg 736w"
+              width="736" height="1104" loading="lazy" decoding="async"
+              alt="Мягкие диваны лаунж-зоны Re Forel в тёплом свете свечей">
+          </picture>
+        </div>
+      </div>
+      <figcaption>Лаунж у камина — сюда уходят после ужина, за чаем и разговорами.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ========================================= 3. Атмосфера и интерьер ==== -->
+<section class="section gallery is-dark" id="gallery" aria-labelledby="gallery-title">
+
+  <!-- Фон секции, speed factor 0.3 -->
+  <div class="section__bg gallery__bg" aria-hidden="true">
+    <div class="p-layer" data-parallax data-speed="0.3" data-anchor="parent"></div>
+  </div>
+
+  <div class="container">
+    <p class="eyebrow">Атмосфера</p>
+    <h2 id="gallery-title">Интерьер, в котором<br>хочется остаться дольше</h2>
+
+    <div class="gallery__grid grid">
+
+      <!-- Якорные карточки (6–7 колонок): speed factor 0.6 -->
+      <figure class="g-card g-card--a p-frame" data-speed="0.6">
+        <div class="p-layer" data-parallax data-speed="0.6" data-anchor="frame">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 762px" srcset="images/derived/gallery-loft-480.avif 480w, images/derived/gallery-loft-768.avif 768w, images/derived/gallery-loft-1024.avif 1024w, images/derived/gallery-loft-1200.avif 1200w">
+            <source type="image/webp" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 762px" srcset="images/derived/gallery-loft-480.webp 480w, images/derived/gallery-loft-768.webp 768w, images/derived/gallery-loft-1024.webp 1024w, images/derived/gallery-loft-1200.webp 1200w">
+            <img src="images/derived/gallery-loft-1024.jpg" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 762px" srcset="images/derived/gallery-loft-480.jpg 480w, images/derived/gallery-loft-768.jpg 768w, images/derived/gallery-loft-1024.jpg 1024w, images/derived/gallery-loft-1200.jpg 1200w"
+                 width="1200" height="632" decoding="async"
+                 alt="Основной зал: кирпичные стены, чёрная барная стойка и высокие арочные окна">
+          </picture>
+        </div>
+        <figcaption>Главный зал, вечер вторника</figcaption>
+      </figure>
+
+      <!-- Средние карточки (4–5 колонок): speed factor 0.9 -->
+      <figure class="g-card g-card--b p-frame" data-speed="0.9">
+        <div class="p-layer" data-parallax data-speed="0.9" data-anchor="frame">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 542px" srcset="images/derived/gallery-vintage-480.avif 480w, images/derived/gallery-vintage-768.avif 768w, images/derived/gallery-vintage-1024.avif 1024w, images/derived/gallery-vintage-1440.avif 1440w">
+            <source type="image/webp" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 542px" srcset="images/derived/gallery-vintage-480.webp 480w, images/derived/gallery-vintage-768.webp 768w, images/derived/gallery-vintage-1024.webp 1024w, images/derived/gallery-vintage-1440.webp 1440w">
+            <img src="images/derived/gallery-vintage-768.jpg" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 542px" srcset="images/derived/gallery-vintage-480.jpg 480w, images/derived/gallery-vintage-768.jpg 768w, images/derived/gallery-vintage-1024.jpg 1024w, images/derived/gallery-vintage-1440.jpg 1440w"
+                 width="1500" height="1000" decoding="async"
+                 alt="Каминный зал с креслами, лепниной и гирляндами ламп накаливания">
+          </picture>
+        </div>
+        <figcaption>Каминный зал</figcaption>
+      </figure>
+
+      <figure class="g-card g-card--c p-frame" data-speed="0.9">
+        <div class="p-layer" data-parallax data-speed="0.9" data-anchor="frame">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 432px" srcset="images/derived/gallery-blooms-368.avif 368w, images/derived/gallery-blooms-560.avif 560w, images/derived/gallery-blooms-736.avif 736w">
+            <source type="image/webp" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 432px" srcset="images/derived/gallery-blooms-368.webp 368w, images/derived/gallery-blooms-560.webp 560w, images/derived/gallery-blooms-736.webp 736w">
+            <img src="images/derived/gallery-blooms-560.jpg" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 432px" srcset="images/derived/gallery-blooms-368.jpg 368w, images/derived/gallery-blooms-560.jpg 560w, images/derived/gallery-blooms-736.jpg 736w"
+                 width="736" height="1308" loading="lazy" decoding="async"
+                 alt="Барная зона с подвесными цветочными композициями и рядом бутылок на полках">
+          </picture>
+        </div>
+        <figcaption>Цветочные подвесы над баром</figcaption>
+      </figure>
+
+      <figure class="g-card g-card--d p-frame" data-speed="0.9">
+        <div class="p-layer" data-parallax data-speed="0.9" data-anchor="frame">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 542px" srcset="images/derived/gallery-daylight-480.avif 480w, images/derived/gallery-daylight-768.avif 768w, images/derived/gallery-daylight-1024.avif 1024w, images/derived/gallery-daylight-1200.avif 1200w">
+            <source type="image/webp" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 542px" srcset="images/derived/gallery-daylight-480.webp 480w, images/derived/gallery-daylight-768.webp 768w, images/derived/gallery-daylight-1024.webp 1024w, images/derived/gallery-daylight-1200.webp 1200w">
+            <img src="images/derived/gallery-daylight-768.jpg" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 542px" srcset="images/derived/gallery-daylight-480.jpg 480w, images/derived/gallery-daylight-768.jpg 768w, images/derived/gallery-daylight-1024.jpg 1024w, images/derived/gallery-daylight-1200.jpg 1200w"
+                 width="1200" height="632" loading="lazy" decoding="async"
+                 alt="Дневной зал с панорамными окнами, серыми стенами и длинными столами">
+          </picture>
+        </div>
+        <figcaption>Дневной свет, обеденное время</figcaption>
+      </figure>
+
+      <!-- Мелкая карточка (3 колонки): speed factor 1.15 -->
+      <figure class="g-card g-card--e p-frame" data-speed="1.15">
+        <div class="p-layer" data-parallax data-speed="1.15" data-anchor="frame">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 322px" srcset="images/derived/gallery-service-480.avif 480w, images/derived/gallery-service-768.avif 768w, images/derived/gallery-service-1024.avif 1024w">
+            <source type="image/webp" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 322px" srcset="images/derived/gallery-service-480.webp 480w, images/derived/gallery-service-768.webp 768w, images/derived/gallery-service-1024.webp 1024w">
+            <img src="images/derived/gallery-service-768.jpg" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 322px" srcset="images/derived/gallery-service-480.jpg 480w, images/derived/gallery-service-768.jpg 768w, images/derived/gallery-service-1024.jpg 1024w"
+                 width="1200" height="632" loading="lazy" decoding="async"
+                 alt="Официант досервировывает стол: бокалы, приборы и свеча крупным планом">
+          </picture>
+        </div>
+        <figcaption>За двадцать минут до открытия</figcaption>
+      </figure>
+
+      <figure class="g-card g-card--f p-frame" data-speed="0.6">
+        <div class="p-layer" data-parallax data-speed="0.6" data-anchor="frame">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 652px" srcset="images/derived/gallery-banquette-480.avif 480w, images/derived/gallery-banquette-768.avif 768w, images/derived/gallery-banquette-1024.avif 1024w, images/derived/gallery-banquette-1200.avif 1200w">
+            <source type="image/webp" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 652px" srcset="images/derived/gallery-banquette-480.webp 480w, images/derived/gallery-banquette-768.webp 768w, images/derived/gallery-banquette-1024.webp 1024w, images/derived/gallery-banquette-1200.webp 1200w">
+            <img src="images/derived/gallery-banquette-1024.jpg" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 652px" srcset="images/derived/gallery-banquette-480.jpg 480w, images/derived/gallery-banquette-768.jpg 768w, images/derived/gallery-banquette-1024.jpg 1024w, images/derived/gallery-banquette-1200.jpg 1200w"
+                 width="1200" height="632" loading="lazy" decoding="async"
+                 alt="Кожаные банкетки у окна, графика на стенах и сервированные столы">
+          </picture>
+        </div>
+        <figcaption>Банкетки у окна</figcaption>
+      </figure>
+
+      <figure class="g-card g-card--g p-frame" data-speed="0.6">
+        <div class="p-layer" data-parallax data-speed="0.6" data-anchor="frame">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 652px" srcset="images/derived/gallery-sunburst-480.avif 480w, images/derived/gallery-sunburst-768.avif 768w, images/derived/gallery-sunburst-1024.avif 1024w, images/derived/gallery-sunburst-1440.avif 1440w">
+            <source type="image/webp" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 652px" srcset="images/derived/gallery-sunburst-480.webp 480w, images/derived/gallery-sunburst-768.webp 768w, images/derived/gallery-sunburst-1024.webp 1024w, images/derived/gallery-sunburst-1440.webp 1440w">
+            <img src="images/derived/gallery-sunburst-1024.jpg" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 50vw, 652px" srcset="images/derived/gallery-sunburst-480.jpg 480w, images/derived/gallery-sunburst-768.jpg 768w, images/derived/gallery-sunburst-1024.jpg 1024w, images/derived/gallery-sunburst-1440.jpg 1440w"
+                 width="1500" height="1000" loading="lazy" decoding="async"
+                 alt="Стена-солнце из деревянных реек над длинной кожаной банкеткой">
+          </picture>
+        </div>
+        <figcaption>Стена-солнце, работа местных краснодеревщиков</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================== 4. Пространства ресторана ======== -->
+<section class="section spaces" id="spaces" aria-labelledby="spaces-title">
+  <div class="container">
+    <p class="eyebrow">Пространства</p>
+    <h2 id="spaces-title">Четыре зала — четыре разных вечера</h2>
+
+    <div class="spaces__tabs" role="tablist" aria-label="Пространства ресторана">
+      <button class="spaces__tab" role="tab" id="tab-hall"    aria-controls="panel-hall"    aria-selected="true"  tabindex="0">Зал</button>
+      <button class="spaces__tab" role="tab" id="tab-terrace" aria-controls="panel-terrace" aria-selected="false" tabindex="-1">Терраса</button>
+      <button class="spaces__tab" role="tab" id="tab-bar"     aria-controls="panel-bar"     aria-selected="false" tabindex="-1">Бар</button>
+      <button class="spaces__tab" role="tab" id="tab-banquet" aria-controls="panel-banquet" aria-selected="false" tabindex="-1">Банкетный зал</button>
+    </div>
+
+    <div class="spaces__stage">
+      <!-- Фото активной зоны, speed factor 0.4 + cross-fade 350 мс -->
+      <div class="spaces__media p-frame">
+        <div class="p-layer" data-parallax data-speed="0.4" data-anchor="frame">
+
+          <div class="spaces__shot" data-shot="hall" data-active="true">
+            <picture>
+              <source type="image/avif" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-hall-480.avif 480w, images/derived/space-hall-768.avif 768w, images/derived/space-hall-1024.avif 1024w, images/derived/space-hall-1440.avif 1440w, images/derived/space-hall-1920.avif 1920w">
+              <source type="image/webp" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-hall-480.webp 480w, images/derived/space-hall-768.webp 768w, images/derived/space-hall-1024.webp 1024w, images/derived/space-hall-1440.webp 1440w, images/derived/space-hall-1920.webp 1920w">
+              <img src="images/derived/space-hall-1440.jpg" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-hall-480.jpg 480w, images/derived/space-hall-768.jpg 768w, images/derived/space-hall-1024.jpg 1024w, images/derived/space-hall-1440.jpg 1440w, images/derived/space-hall-1920.jpg 1920w"
+                   width="7952" height="5304" loading="lazy" decoding="async"
+                   alt="Основной зал: дубовые панели, коньячная кожа и скульптурная подсветка потолка">
+            </picture>
+          </div>
+
+          <!-- ВРЕМЕННАЯ ЗАЛИВКА: фотографий террасы в наборе нет ни одной.
+               Вместо повтора чужого кадра — сгенерированная сцена в брендовой
+               палитре, помеченная бейджем. См. tools/build-placeholders.mjs -->
+          <div class="spaces__shot" data-shot="terrace">
+            <img src="images/placeholders/terrace.svg" width="1600" height="900"
+                 loading="lazy" decoding="async"
+                 alt="Временная заливка вместо фотографии террасы: сумеречное небо, полосатая маркиза и силуэты зелени">
+          </div>
+
+          <div class="spaces__shot" data-shot="bar">
+            <picture>
+              <source type="image/avif" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-bar-480.avif 480w, images/derived/space-bar-768.avif 768w, images/derived/space-bar-1024.avif 1024w, images/derived/space-bar-1200.avif 1200w">
+              <source type="image/webp" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-bar-480.webp 480w, images/derived/space-bar-768.webp 768w, images/derived/space-bar-1024.webp 1024w, images/derived/space-bar-1200.webp 1200w">
+              <img src="images/derived/space-bar-1200.jpg" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-bar-480.jpg 480w, images/derived/space-bar-768.jpg 768w, images/derived/space-bar-1024.jpg 1024w, images/derived/space-bar-1200.jpg 1200w"
+                   width="1200" height="632" loading="lazy" decoding="async"
+                   alt="Барная стойка с подсвеченными полками, бутылками и высокими стульями">
+            </picture>
+          </div>
+
+          <div class="spaces__shot" data-shot="banquet">
+            <picture>
+              <source type="image/avif" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-banquet-480.avif 480w, images/derived/space-banquet-768.avif 768w, images/derived/space-banquet-1010.avif 1010w">
+              <source type="image/webp" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-banquet-480.webp 480w, images/derived/space-banquet-768.webp 768w, images/derived/space-banquet-1010.webp 1010w">
+              <img src="images/derived/space-banquet-1010.jpg" sizes="(max-width: 1023px) 100vw, (max-width: 1439px) calc(100vw - 128px), 1320px" srcset="images/derived/space-banquet-480.jpg 480w, images/derived/space-banquet-768.jpg 768w, images/derived/space-banquet-1010.jpg 1010w"
+                   width="1010" height="720" loading="lazy" decoding="async"
+                   alt="Банкетный зал: белые скатерти, люстры и арочные окна во всю стену">
+            </picture>
+          </div>
+
+        </div>
+        <span class="placeholder-badge" data-badge-for="terrace" hidden>Фото готовится</span>
+      </div>
+
+      <!-- Карточки зон, speed factor 1.0 — не двигаются, только приподняты тенью -->
+      <div class="spaces__panel" role="tabpanel" id="panel-hall" aria-labelledby="tab-hall" tabindex="0" data-active="true" data-parallax data-speed="1">
+        <h3>Зал</h3>
+        <p>Сердце ресторана: дубовые панели, открытая кухня и вид на угольный под.
+          Здесь слышно, как работает огонь.</p>
+        <dl><div><dt>Посадка</dt><dd>64 гостя</dd></div><div><dt>Площадь</dt><dd>180 м²</dd></div></dl>
+      </div>
+
+      <div class="spaces__panel" role="tabpanel" id="panel-terrace" aria-labelledby="tab-terrace" tabindex="0" hidden data-parallax data-speed="1">
+        <h3>Терраса</h3>
+        <p>Открыта с мая по октябрь. Под маркизой, с гирляндами и пледами
+          на прохладные вечера. Отсюда видно реку.</p>
+        <dl><div><dt>Посадка</dt><dd>36 гостей</dd></div><div><dt>Сезон</dt><dd>Май — октябрь</dd></div></dl>
+      </div>
+
+      <div class="spaces__panel" role="tabpanel" id="panel-bar" aria-labelledby="tab-bar" tabindex="0" hidden data-parallax data-speed="1">
+        <h3>Бар</h3>
+        <p>Двенадцать мест у стойки, настойки на ольхе и можжевельнике,
+          короткое барное меню до последнего гостя.</p>
+        <dl><div><dt>Посадка</dt><dd>12 мест</dd></div><div><dt>До</dt><dd>02:00</dd></div></dl>
+      </div>
+
+      <div class="spaces__panel" role="tabpanel" id="panel-banquet" aria-labelledby="tab-banquet" tabindex="0" hidden data-parallax data-speed="1">
+        <h3>Банкетный зал</h3>
+        <p>Отдельный вход, своя гардеробная и проектор. Сет-меню согласуем
+          за неделю, кухня работает только на вас.</p>
+        <dl><div><dt>Посадка</dt><dd>40 гостей</dd></div><div><dt>Площадь</dt><dd>95 м²</dd></div></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ 5. Меню (тизер) ===== -->
+<section class="section menu is-dark" id="menu" aria-labelledby="menu-title">
+
+  <!-- Фон секции, speed factor 0.4 -->
+  <div class="section__bg menu__bg" aria-hidden="true">
+    <div class="p-layer" data-parallax data-speed="0.4" data-anchor="parent"></div>
+  </div>
+
+  <div class="container">
+    <p class="eyebrow">Меню</p>
+    <h2 id="menu-title">Что сегодня на углях</h2>
+
+    <!-- Фото блюд: speed factor 1.15 с разбросом ±20px между соседями,
+         чтобы тарелки не всплывали строго синхронно (ТЗ §5). -->
+    <div class="menu__grid">
+
+      <article class="dish" data-reveal>
+        <figure class="dish__figure">
+          <img src="images/placeholders/dish-01.svg" width="800" height="800"
+               loading="lazy" decoding="async"
+               data-parallax data-speed="1.15" data-offset="-20" data-anchor="parent" data-amp="0.4"
+               alt="Временная заливка вместо фотографии: филе форели на светлой керамике">
+          <span class="placeholder-badge">Фото готовится</span>
+        </figure>
+        <h3>Форель на кедровых углях</h3>
+        <p>Целое филе, ольховый дым, лимонное масло и хрустящая кожа.</p>
+        <span class="dish__price">1 480 ₽</span>
+      </article>
+
+      <article class="dish" data-reveal data-reveal-delay="1">
+        <figure class="dish__figure">
+          <img src="images/placeholders/dish-02.svg" width="800" height="800"
+               loading="lazy" decoding="async"
+               data-parallax data-speed="1.15" data-offset="20" data-anchor="parent" data-amp="0.4"
+               alt="Временная заливка вместо фотографии: уха в глубокой миске">
+          <span class="placeholder-badge">Фото готовится</span>
+        </figure>
+        <h3>Уха из горной форели</h3>
+        <p>Двойная закладка, печёный лук, укропное масло и ржаной сухарь.</p>
+        <span class="dish__price">790 ₽</span>
+      </article>
+
+      <article class="dish" data-reveal data-reveal-delay="2">
+        <figure class="dish__figure">
+          <img src="images/placeholders/dish-03.svg" width="800" height="800"
+               loading="lazy" decoding="async"
+               data-parallax data-speed="1.15" data-offset="-10" data-anchor="parent" data-amp="0.4"
+               alt="Временная заливка вместо фотографии: тартар кольцом с яблочными лепестками">
+          <span class="placeholder-badge">Фото готовится</span>
+        </figure>
+        <h3>Тартар с зелёным яблоком</h3>
+        <p>Ручная рубка, каперсы, эстрагон и тонкие пластины антоновки.</p>
+        <span class="dish__price">1 120 ₽</span>
+      </article>
+
+      <article class="dish" data-reveal data-reveal-delay="3">
+        <figure class="dish__figure">
+          <img src="images/placeholders/dish-04.svg" width="800" height="800"
+               loading="lazy" decoding="async"
+               data-parallax data-speed="1.15" data-offset="15" data-anchor="parent" data-amp="0.4"
+               alt="Временная заливка вместо фотографии: икра форели на ломтях ржаного хлеба">
+          <span class="placeholder-badge">Фото готовится</span>
+        </figure>
+        <h3>Икра форели на ржаном</h3>
+        <p>Своя засолка, сливочное масло и подовый хлеб на закваске.</p>
+        <span class="dish__price">1 640 ₽</span>
+      </article>
+
+    </div>
+
+    <div class="menu__cta">
+      <a class="btn btn--solid" href="#menu">Смотреть меню целиком</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= 6. Как нас найти ======= -->
+<section class="section find is-light" id="find" aria-labelledby="find-title">
+  <div class="container">
+    <p class="eyebrow">Как нас найти</p>
+    <h2 id="find-title">В двух шагах от воды</h2>
+
+    <div class="find__grid grid">
+
+      <!-- Карта, speed factor 0.3 — максимально «заякорена» -->
+      <div class="find__map p-frame">
+        <div class="p-layer" data-parallax data-speed="0.3" data-anchor="frame">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=37.5819%2C55.7589%2C37.6019%2C55.7689&amp;layer=mapnik&amp;marker=55.7639%2C37.5919"
+            title="Карта: расположение ресторана Re Forel"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Карточка контактов, speed factor 1.0 -->
+      <div class="find__card" data-parallax data-speed="1" data-reveal>
+        <h3>Ресторан Re Forel</h3>
+
+        <dl class="find__list">
+          <div>
+            <dt>Адрес</dt>
+            <dd>Москва, Малая Бронная, 00<br><span class="small">Вход со двора, вывеска с форелью</span></dd>
+          </div>
+          <div>
+            <dt>Часы работы</dt>
+            <dd>Пн–Чт 12:00 — 00:00<br>Пт–Вс 12:00 — 02:00</dd>
+          </div>
+          <div>
+            <dt>Телефон</dt>
+            <dd><a href="tel:+74950000000">+7 495 000-00-00</a></dd>
+          </div>
+        </dl>
+
+        <a class="btn btn--dark btn--block" href="tel:+74950000000">Позвонить в ресторан</a>
+        <p class="find__note">Адрес и телефон — заглушки для вёрстки.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================================================== 7. Футер ======= -->
+<!-- ТЗ: параллакса нет, секция полностью статична. -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+
+      <div>
+        <span class="logo">Re&nbsp;<em>Forel</em></span>
+        <p class="site-footer__about">Ресторан северной кухни. Форель с горных ферм,
+          открытый огонь и сезонное меню.</p>
+      </div>
+
+      <div>
+        <h3>Контакты</h3>
+        <ul>
+          <li>Москва, Малая Бронная, 00</li>
+          <li><a href="tel:+74950000000">+7 495 000-00-00</a></li>
+          <li><a href="mailto:hello@reforel.example">hello@reforel.example</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Часы работы</h3>
+        <ul>
+          <li>Пн–Чт&ensp;12:00 — 00:00</li>
+          <li>Пт–Вс&ensp;12:00 — 02:00</li>
+          <li>Терраса&ensp;май — октябрь</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Соцсети</h3>
+        <ul>
+          <li><a href="#find">Telegram</a></li>
+          <li><a href="#find">VK</a></li>
+          <li><a href="#find">Яндекс&nbsp;Карты</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="site-footer__divider">
+
+    <div class="site-footer__legal">
+      <span>© 2026 Re Forel. Демонстрационная вёрстка.</span>
+      <span>Контакты и адрес — заглушки.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

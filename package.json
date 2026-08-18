@@ -1,0 +1,15 @@
+{
+  "name": "re-forel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Лендинг ресторана Re Forel — чистый HTML/CSS/JS без фреймворков и сборщиков. Node нужен только для офлайн-генерации изображений, сам сайт от него не зависит.",
+  "type": "module",
+  "scripts": {
+    "build:images": "node tools/build-images.mjs",
+    "build:placeholders": "node tools/build-placeholders.mjs",
+    "build:assets": "npm run build:images && npm run build:placeholders"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}
