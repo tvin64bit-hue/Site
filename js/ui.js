@@ -201,6 +201,42 @@
     Array.prototype.forEach.call(document.querySelectorAll('[role="tablist"]'), initTabList);
   }
 
+  /* ------------------------------------------------ Раскрытие меню */
+
+  /* Свёрнутое состояние живёт в CSS (атрибут data-expanded на секции), здесь
+     только переключение и подпись. Разметка отдаёт меню целиком, поэтому без
+     JavaScript видны все позиции, а кнопка спрятана стилями. */
+  function initMenuToggle() {
+    const button = document.getElementById('menu-toggle');
+    const section = document.getElementById('menu');
+    if (!button || !section) return;
+
+    const label = button.querySelector('.menu__toggle-label');
+    const show = label && label.getAttribute('data-label-show');
+    const hide = label && label.getAttribute('data-label-hide');
+
+    button.addEventListener('click', function () {
+      const expanded = section.getAttribute('data-expanded') === 'true';
+
+      if (expanded) {
+        // При сворачивании кнопка уезжает вверх на высоту скрытого списка,
+        // и без возврата пользователь оказался бы посреди следующей секции.
+        const top = section.getBoundingClientRect().top + window.scrollY;
+        section.removeAttribute('data-expanded');
+        button.setAttribute('aria-expanded', 'false');
+        if (label) label.textContent = show;
+        window.scrollTo({
+          top: top - 80,
+          behavior: reduceMotion.matches ? 'auto' : 'smooth',
+        });
+      } else {
+        section.setAttribute('data-expanded', 'true');
+        button.setAttribute('aria-expanded', 'true');
+        if (label) label.textContent = hide;
+      }
+    });
+  }
+
   /* ---------------------------------------------------- Появление hero */
 
   function initHero() {
@@ -226,7 +262,7 @@
     initNavToggle();
     initScrollSpy();
     initTabs();
-    void reduceMotion;   // движение регулируется в CSS и js/parallax.js
+    initMenuToggle();
   }
 
   if (document.readyState === 'loading') {

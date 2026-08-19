@@ -754,47 +754,71 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
     linear-gradient(to bottom, var(--deep), var(--pine) 45%, var(--moss));
 }
 
-/* Переключатель категорий. В ТЗ §5 меню — тизер на 3–4 блюда; здесь оно
-   выросло до четырёх категорий, потому что появились реальные данные.
-   Раскладка карточек внутри категории осталась ровно по ТЗ. */
-.menu__tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-block-start: 40px;
-  border-block-end: 1px solid rgba(244, 241, 232, .16);
+/* Список сгруппирован по категориям. В свёрнутом виде показаны первые
+   несколько позиций, остальные помечены data-extra и скрыты. Скрываем
+   карточки внутри той же сетки, а не отдельным блоком: иначе при раскрытии
+   рядом оказались бы две сетки и колонки бы поехали. */
+.menu__cats {
+  margin-block-start: 48px;
+  display: grid;
+  /* minmax(0, 1fr), а не 1fr: у грид-элементов min-width по умолчанию auto,
+     и на mobile горизонтальная карусель внутри категории распирала бы
+     контейнер до своей полной ширины вместо того, чтобы прокручиваться. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 72px;
 }
-.menu__tab {
-  position: relative;
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 16px 24px;
-  font-size: var(--f-small);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--on-dark-muted);
-  white-space: nowrap;
-  transition: color .25s var(--ease);
-}
-.menu__tab::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 -1px 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--rose), var(--river));
-  transform: scaleX(0);
-  transition: transform .3s var(--ease);
-}
-.menu__tab:hover,
-.menu__tab[aria-selected="true"] { color: var(--on-dark); }
-.menu__tab[aria-selected="true"]::after { transform: scaleX(1); }
-.menu__tab-count { font-size: 11px; letter-spacing: 0; color: var(--river); opacity: .8; }
+.menu__cat { min-width: 0; }
 
-.menu__panel { animation: panel-in .3s var(--ease) both; }
+.menu__cat-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-block-end: 28px;
+  font-family: var(--font-ui);
+  font-size: var(--f-small);
+  font-weight: 400;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--river);
+}
+.menu__cat-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(143, 179, 174, .5), transparent);
+}
+/* Порядок задан разметкой: название → счётчик → линия. Свойство order здесь
+   не нужно и раньше только выталкивало счётчик за линию, к правому краю. */
+.menu__cat-count {
+  font-size: 11px;
+  letter-spacing: 0;
+  color: var(--on-dark-muted);
+}
+
+/* Свёрнутое состояние действует только когда работает JS — иначе кнопка
+   не нажимается и часть меню была бы недоступна навсегда. */
+.js .menu:not([data-expanded="true"]) [data-extra] { display: none; }
+html:not(.js) #menu-toggle { display: none; }
+
+.menu__toggle-count {
+  padding-inline-start: 10px;
+  margin-inline-start: 2px;
+  border-inline-start: 1px solid currentColor;
+  font-size: 12px;
+  letter-spacing: .04em;
+  opacity: .6;
+}
+
+.menu__note {
+  margin-block-start: 20px;
+  text-align: center;
+  font-size: var(--f-small);
+  color: var(--on-dark-muted);
+}
+.menu__note a { color: var(--river); text-decoration: underline; text-underline-offset: 3px; }
+.menu__note a:hover { color: var(--on-dark); }
 
 .menu__grid {
-  margin-block-start: 40px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));   /* ТЗ: 3–4 колонки */
   gap: 32px;                                          /* ТЗ: 32px desktop */
@@ -874,16 +898,8 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
   .menu__grid::-webkit-scrollbar { display: none; }
   .dish { scroll-snap-align: center; }
   .dish__figure { padding-block: 16px; }
-  /* ТЗ: табы горизонтальным скроллом, без переноса строк. */
-  .menu__tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    margin-inline: calc(-1 * var(--pad));
-    padding-inline: var(--pad);
-  }
-  .menu__tabs::-webkit-scrollbar { display: none; }
-  .menu__tab { padding: 14px 18px; }
+  .menu__cats { gap: 48px; }
+  .menu__cat-title { margin-block-end: 20px; }
   .menu__cta .btn { width: 100%; }
 }
 
