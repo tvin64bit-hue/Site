@@ -9,7 +9,8 @@
     "build:placeholders": "node tools/build-placeholders.mjs",
     "build:assets": "npm run build:images && npm run build:placeholders",
     "extract:dishes": "node tools/extract-dish-photos.mjs",
-    "build:menu": "node tools/build-menu-html.mjs"
+    "build:menu": "node tools/build-menu-html.mjs",
+    "check:contrast": "node tools/check-contrast.mjs"
   },
   "devDependencies": {
     "@napi-rs/canvas": "^0.1.60",

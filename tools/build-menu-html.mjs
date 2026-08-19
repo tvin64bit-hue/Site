@@ -78,8 +78,6 @@ ${cards}
         </section>`;
 }).join('\n\n');
 
-const total = menu.reduce((n, c) => n + c.items.length, 0);
-
 const html = `      <div class="menu__cats" id="menu-list">
 ${sections}
       </div>
@@ -91,15 +89,8 @@ ${sections}
                 aria-expanded="false" aria-controls="menu-list">
           <span class="menu__toggle-label" data-label-show="Показать всё меню"
                 data-label-hide="Скрыть меню">Показать всё меню</span>
-          <span class="menu__toggle-count" aria-hidden="true">${total}</span>
         </button>
-      </div>
-
-      <p class="menu__note">
-        На сайте — 4 категории из 14.
-        <a href="https://eda.yandex.ru/chelyabinsk/r/manana_mama" target="_blank" rel="noopener noreferrer">
-          Полное меню<span class="visually-hidden"> — откроется в новой вкладке</span></a>
-      </p>`;
+      </div>`;
 
 const indexPath = path.join(root, 'index.html');
 const src = await readFile(indexPath, 'utf8');
@@ -109,6 +100,7 @@ if (a < 0 || b < 0) { console.error(`Маркеры ${START} / ${END} не на�
 
 await writeFile(indexPath, src.slice(0, a + START.length) + '\n' + html + '\n      ' + src.slice(b));
 
+const total = menu.reduce((n, c) => n + c.items.length, 0);
 const withPhoto = menu.reduce((n, c) => n + c.items.filter((i) => i.photo).length, 0);
 console.log(`меню собрано: ${menu.length} категории, ${total} блюд (${withPhoto} с фото)`);
 console.log(`в свёрнутом виде показано: ${TEASER}, скрыто: ${total - TEASER}`);

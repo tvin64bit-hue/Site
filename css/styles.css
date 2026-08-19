@@ -391,9 +391,12 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
   font-size: var(--f-small);
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--on-dark-muted);
+  /* Над фотографией .72 давало 3.8:1 в худшей точке; на плотном фоне
+     уплотнённой шапки цвет возвращается к общему приглушённому. */
+  color: rgba(244, 241, 232, .88);
   transition: color .25s var(--ease);
 }
+.site-header.is-solid .site-nav a { color: var(--on-dark-muted); }
 .site-nav a::after {
   content: "";
   position: absolute;
@@ -482,7 +485,37 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
 .hero__scrim--top {
   inset: 0 0 auto 0;
   height: 28%;
-  background: linear-gradient(to bottom, rgba(10, 24, 23, .5), rgba(10, 24, 23, 0));
+  background: linear-gradient(to bottom, rgba(10, 24, 23, .62), rgba(10, 24, 23, 0));
+}
+
+/* Тоже сверх ТЗ. Градиент из ТЗ заканчивается на 50% высоты, а H1 стоит выше
+   его плотной части и пересекает светлые жалюзи в кадре — контраст там падал
+   до 1.1:1, текст практически пропадал.
+   Затемняем именно левую колонку, где живёт текстовый блок: обводка убила бы
+   контраст штрихов Cormorant Garamond, а плашка — полноэкранное фото.
+   Правая часть кадра остаётся чистой. */
+.hero__scrim--text {
+  inset: 0;
+  /* Базовый .hero__scrim задаёт height: 50% (величина из ТЗ). У абсолютного
+     элемента при заданной height свойство bottom игнорируется, поэтому без
+     этой строки слой обрывался на середине экрана — ровно там, где стоит H1. */
+  height: auto;
+  background: linear-gradient(100deg,
+    rgba(8, 20, 19, .86) 0%,
+    rgba(8, 20, 19, .74) 26%,
+    rgba(8, 20, 19, .46) 46%,
+    rgba(8, 20, 19, .12) 62%,
+    rgba(8, 20, 19, 0) 72%);
+}
+@media (max-width: 767.98px) {
+  /* На узком экране текст занимает всю ширину — затемняем равномерно. */
+  .hero__scrim--text {
+    background: linear-gradient(to top,
+      rgba(8, 20, 19, .78) 0%,
+      rgba(8, 20, 19, .55) 45%,
+      rgba(8, 20, 19, .22) 75%,
+      rgba(8, 20, 19, 0) 100%);
+  }
 }
 
 .hero__particles {
@@ -502,6 +535,16 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
 }
 
 .hero__text { max-width: 640px; }        /* ТЗ: до 640px, «для воздуха» */
+/* Поверх фотографии --river даёт всего 2.7:1. Надзаголовок набран 14px,
+   то есть требует полных 4.5:1 (послабление для крупного текста не работает),
+   поэтому осветляем его именно в hero — в остальных секциях акцент прежний. */
+.hero .eyebrow { color: #DDE9E6; }
+.hero h1 {
+  /* Мягкое рассеянное свечение, а не обводка: на бликах кадра помогает,
+     а формы букв не трогает. */
+  text-shadow: 0 2px 28px rgba(6, 18, 17, .55);
+}
+.hero__lead { text-shadow: 0 1px 16px rgba(6, 18, 17, .5); }
 .hero h1 { margin-block: 24px 20px; }
 .hero__lead { color: var(--on-dark-muted); max-width: 52ch; }
 
@@ -799,24 +842,6 @@ h3 { font-size: var(--f-h3); line-height: var(--lh-h3); }
    не нажимается и часть меню была бы недоступна навсегда. */
 .js .menu:not([data-expanded="true"]) [data-extra] { display: none; }
 html:not(.js) #menu-toggle { display: none; }
-
-.menu__toggle-count {
-  padding-inline-start: 10px;
-  margin-inline-start: 2px;
-  border-inline-start: 1px solid currentColor;
-  font-size: 12px;
-  letter-spacing: .04em;
-  opacity: .6;
-}
-
-.menu__note {
-  margin-block-start: 20px;
-  text-align: center;
-  font-size: var(--f-small);
-  color: var(--on-dark-muted);
-}
-.menu__note a { color: var(--river); text-decoration: underline; text-underline-offset: 3px; }
-.menu__note a:hover { color: var(--on-dark); }
 
 .menu__grid {
   display: grid;
