@@ -951,3 +951,144 @@ ul { padding: 0; list-style: none; }
   .marquee__list { flex-wrap: wrap; justify-content: center; }
   .band__bg { transform: none !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   УЗОРЫ И ЭФФЕКТЫ НАВЕДЕНИЯ
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Фоновый узор ────────────────────────────────────────────────
+   Ромбовидная сетка в духе итальянской майолики. Нарисована прямо
+   в CSS через data-URI, отдельного файла не требует. */
+.section_pattern {
+  position: relative;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23912f32' stroke-opacity='0.10' stroke-width='1'%3E%3Cpath d='M32 3 61 32 32 61 3 32z'/%3E%3Cpath d='M32 19 45 32 32 45 19 32z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 64px 64px;
+}
+/* Узор гасится к центру, чтобы не спорил с текстом */
+.section_pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center,
+    var(--paper-warm) 34%, rgba(250, 247, 244, 0.72) 62%, rgba(250, 247, 244, 0) 100%);
+  pointer-events: none;
+}
+.section_pattern > * { position: relative; z-index: 1; }
+
+/* ── Орнамент-разделитель ────────────────────────────────────────── */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 26px 0;
+  color: var(--wine);
+  opacity: 0.6;
+}
+.ornament::before,
+.ornament::after {
+  content: '';
+  width: clamp(40px, 12vw, 120px);
+  height: 1px;
+  background: currentColor;
+}
+.ornament span {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+.ornament span::after {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 3px;
+  margin: 2px;
+  background: currentColor;
+}
+
+/* ── Карточка с поднимающимся описанием ──────────────────────────
+   Без наведения (телефон, планшет) подпись просто лежит на нижней
+   части фотографии. Там, где наведение есть, она прячется и
+   выезжает снизу. */
+.card_hover .card__media { position: relative; }
+.card__reveal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 26px 20px 18px;
+  background: linear-gradient(180deg, rgba(145, 47, 50, 0), rgba(145, 47, 50, 0.95) 32%);
+  color: #fff;
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+@media (hover: hover) {
+  .card_hover {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .card_hover:hover,
+  .card_hover:focus-within {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  .card_hover .card__media img { transition: transform 0.6s ease; }
+  .card_hover:hover .card__media img,
+  .card_hover:focus-within .card__media img { transform: scale(1.06); }
+
+  .card__reveal {
+    opacity: 0;
+    transform: translateY(101%);
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.3s ease;
+  }
+  .card_hover:hover .card__reveal,
+  .card_hover:focus-within .card__reveal { opacity: 1; transform: none; }
+
+  /* Фото-карточки банкетов: список раскрывается целиком — иначе
+     в покое остаются висеть «От 15 000₽:» без продолжения */
+  .photo-card img { transition: transform 0.6s ease; }
+  .photo-card:hover img,
+  .photo-card:focus-within img { transform: scale(1.05); }
+  .photo-card__list {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: max-height 0.5s ease, opacity 0.35s ease,
+                transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), margin-top 0.5s ease;
+  }
+  .photo-card:hover .photo-card__list,
+  .photo-card:focus-within .photo-card__list {
+    max-height: 16em;
+    opacity: 1;
+    transform: none;
+  }
+  /* Значок-подсказка: снизу есть что раскрыть */
+  .photo-card__title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .photo-card__title::after {
+    content: '⌄';
+    flex: none;
+    font-size: 0.85em;
+    opacity: 0.7;
+    transition: transform 0.35s ease;
+  }
+  .photo-card:hover .photo-card__title::after,
+  .photo-card:focus-within .photo-card__title::after { transform: rotate(180deg); }
+}
+
+/* Высоты хватает и в раскрытом состоянии — соседние блоки не прыгают */
+.photo-card { min-height: clamp(340px, 30vw, 420px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card_hover, .card_hover .card__media img,
+  .card__reveal, .photo-card img, .photo-card__list { transition: none; }
+}
