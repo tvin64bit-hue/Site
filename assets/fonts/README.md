@@ -4,10 +4,15 @@
 Файлы шрифта должны лежать здесь, рядом с этим файлом:
 
 ```
-assets/fonts/roboto-400.woff2    обычное начертание
-assets/fonts/roboto-500.woff2    средней жирности
-assets/fonts/roboto-700.woff2    жирное
+assets/fonts/roboto-400.woff2           текст, обычное начертание
+assets/fonts/roboto-500.woff2           текст, средней жирности
+assets/fonts/roboto-700.woff2           текст, жирное
+assets/fonts/playfair-600.woff2         заголовки
+assets/fonts/playfair-600-italic.woff2  заголовки курсивом
 ```
+
+Заголовки набраны антиквой. Пока файлов Playfair Display нет, работает
+Georgia — она есть в любой системе и выглядит близко.
 
 Правила `@font-face` уже прописаны в `assets/css/style.css` — как только
 файлы появятся, они подхватятся сами, править код не нужно.
@@ -22,13 +27,15 @@ Roboto. Пока файлов нет, браузер берёт запасной
 
 ## Как добавить
 
-1. Откройте <https://fonts.google.com/specimen/Roboto> и скачайте семейство
+1. Откройте <https://fonts.google.com/specimen/Roboto> и
+   <https://fonts.google.com/specimen/Playfair+Display>, скачайте семейства
    (кнопка **Get font** → **Download all**).
 2. Из архива возьмите три файла нужных начертаний (Regular, Medium, Bold).
-3. Если это `.ttf`, сконвертируйте их в `.woff2` — например, на
+3. Из Playfair Display возьмите SemiBold (600) и SemiBold Italic.
+4. Если это `.ttf`, сконвертируйте их в `.woff2` — например, на
    <https://cloudconvert.com/ttf-to-woff2>. Формат `woff2` весит примерно
    вдвое меньше и поддерживается всеми актуальными браузерами.
-4. Положите файлы сюда под именами из списка выше и закоммитьте.
+5. Положите файлы сюда под именами из списка выше и закоммитьте.
 
-Roboto распространяется по лицензии Apache 2.0 — класть его файлы
-в репозиторий проекта можно.
+Roboto и Playfair Display распространяются по свободным лицензиям
+(Apache 2.0 и SIL OFL) — класть их файлы в репозиторий проекта можно.

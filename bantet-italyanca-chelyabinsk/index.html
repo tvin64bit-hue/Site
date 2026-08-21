@@ -56,21 +56,41 @@
       <p class="hero__tagline" style="letter-spacing:0.14em">La festa italiano</p>
       <h1 class="h1" style="margin-bottom:26px">Ваш праздник в ритме итальянской тарантеллы</h1>
       <div class="hero__actions">
-        <button class="btn btn_primary" type="button" data-modal="modal-banquet">Рассчитать банкет</button>
+        <button class="btn btn_primary btn_shine" type="button" data-modal="modal-banquet">Рассчитать банкет</button>
         <a class="btn btn_light" href="tel:+79087003179">Позвонить</a>
       </div>
     </div>
+    <a class="hero__scroll" href="#about-banquet" aria-label="К описанию банкетов">
+      <span>листайте</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M6 9l6 6 6-6"></path>
+      </svg>
+    </a>
   </section>
 
-  <div class="strip">
-    <div class="shell strip__inner">
-      <span class="strip__item">Скидка 15% именинникам</span>
-      <span class="strip__item">Зал вмещает до 80 гостей</span>
+  <div class="marquee">
+    <div class="marquee__track">
+      <div class="marquee__list">
+        <span class="marquee__item">скидка 15% именинникам</span>
+        <span class="marquee__item">зал до 80 гостей</span>
+        <span class="marquee__item">живая музыка</span>
+        <span class="marquee__item">подарок от шефа от 15 000₽</span>
+        <span class="marquee__item">домашняя лимончелло от 30 000₽</span>
+        <span class="marquee__item">тарантелла от официантов</span>
+      </div>
+      <div class="marquee__list" aria-hidden="true">
+        <span class="marquee__item">скидка 15% именинникам</span>
+        <span class="marquee__item">зал до 80 гостей</span>
+        <span class="marquee__item">живая музыка</span>
+        <span class="marquee__item">подарок от шефа от 15 000₽</span>
+        <span class="marquee__item">домашняя лимончелло от 30 000₽</span>
+        <span class="marquee__item">тарантелла от официантов</span>
+      </div>
     </div>
   </div>
 
   <section class="section" id="about-banquet">
-    <div class="shell about">
+    <div class="shell about" data-reveal>
       <h2 class="h2" style="margin-bottom:18px">Банкетное предложение в ресторане «Итальянка»</h2>
       <p class="lead">Дорогие гости!</p>
       <p>Приглашаем вас окунуться в атмосферу настоящей Италии и отметить важные события
@@ -82,12 +102,12 @@
 
   <section class="section section_warm" id="included">
     <div class="shell">
-      <div class="section__head">
+      <div class="section__head" data-reveal>
         <h2 class="h2">Что входит в банкет</h2>
       </div>
 
       <div class="cards">
-        <article class="card">
+        <article class="card" data-reveal>
           <div class="card__body">
             <h3 class="card__title">Гастрономия</h3>
             <ul class="card__text" style="display:grid;gap:8px">
@@ -98,7 +118,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-reveal>
           <div class="card__body">
             <h3 class="card__title">Атмосфера</h3>
             <ul class="card__text" style="display:grid;gap:8px">
@@ -110,7 +130,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-reveal>
           <div class="card__body">
             <h3 class="card__title">Бонусы</h3>
             <ul class="card__text" style="display:grid;gap:8px">
@@ -128,12 +148,12 @@
 
   <section class="section" id="terms">
     <div class="shell">
-      <div class="section__head">
+      <div class="section__head" data-reveal>
         <h2 class="h2">Специальные условия</h2>
       </div>
 
       <div class="cards">
-        <article class="photo-card">
+        <article class="photo-card" data-reveal>
           <img src="../assets/img/banquet-photo-4.jpg" alt="Банкетный стол в ресторане Итальянка">
           <div class="photo-card__body">
             <h3 class="photo-card__title">Специальные условия при бронировании банкета ВС-ЧТ:</h3>
@@ -150,7 +170,7 @@
           </div>
         </article>
 
-        <article class="photo-card">
+        <article class="photo-card" data-reveal>
           <img src="../assets/img/banquet-photo-6.jpg" alt="Сервировка банкетного стола">
           <div class="photo-card__body">
             <h3 class="photo-card__title">Всегда в подарок к банкету:</h3>
@@ -175,28 +195,28 @@
 
   <section class="section section_warm">
     <div class="shell">
-      <div class="section__head">
+      <div class="section__head" data-reveal>
         <h2 class="h2">Почему нужно отметить праздник в Итальянке!</h2>
         <p class="section__note">День рождения, юбилей, корпоратив, встреча друзей —
           мы сделаем ваш праздник особенным!</p>
       </div>
 
       <div class="cards">
-        <article class="card">
+        <article class="card" data-reveal>
           <div class="card__body">
             <h3 class="card__title">Любимые блюда итальянской кухни!</h3>
             <p class="card__text">Наше меню предлагает широкий выбор блюд, включая пасту,
               пиццу, морепродукты, мясные и овощные блюда.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-reveal>
           <div class="card__body">
             <h3 class="card__title">Уникальная атмосфера!</h3>
             <p class="card__text">Наши уютные интерьеры, украшенные в традиционном итальянском
               стиле, создают атмосферу комфорта и уюта.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-reveal>
           <div class="card__body">
             <h3 class="card__title">Просторный зал</h3>
             <p class="card__text">Наш зал вмещает большое количество гостей и идеально подходит
@@ -208,12 +228,20 @@
     </div>
   </section>
 
+  <section class="band">
+    <img class="band__bg" src="../assets/img/banquet-photo-2.png" alt="" aria-hidden="true" loading="lazy">
+    <div class="band__inner">
+      <p class="band__quote">Мы любим жизнь и любим праздники!</p>
+      <p class="band__sign">Зал до 80 гостей · Витебская, 4</p>
+    </div>
+  </section>
+
   <section class="section" id="photos">
     <div class="shell">
-      <div class="section__head">
+      <div class="section__head" data-reveal>
         <h2 class="h2">Фотогалерея</h2>
       </div>
-      <div class="gallery">
+      <div class="gallery gallery_masonry" data-zoom-group data-reveal>
         <button type="button" data-zoom><img src="../assets/img/banquet-photo-5.jpg" alt="Банкет в ресторане Итальянка" loading="lazy"></button>
         <button type="button" data-zoom><img src="../assets/img/banquet-photo-7.jpg" alt="Сервировка банкетного стола" loading="lazy"></button>
         <button type="button" data-zoom><img src="../assets/img/banquet-photo-8.jpg" alt="Блюда банкетного меню" loading="lazy"></button>
@@ -228,12 +256,12 @@
 
   <section class="section section_warm" id="contacts">
     <div class="shell">
-      <div class="section__head">
+      <div class="section__head" data-reveal>
         <h2 class="h2">Как нас найти</h2>
       </div>
 
       <div class="contacts">
-        <div class="contacts__list">
+        <div class="contacts__list" data-reveal>
           <div class="contacts__row">
             <span class="contacts__label">Адрес</span>
             <span class="contacts__value">г. Челябинск, ул. Витебская, 4</span>
@@ -251,7 +279,8 @@
           </p>
         </div>
 
-        <a class="map-card" href="https://yandex.ru/maps/?pt=61.371041,55.154774&z=17&l=map" target="_blank" rel="noopener" aria-label="Открыть карту: Челябинск, Витебская, 4">
+        <a class="map-card map-card_photo" data-reveal href="https://yandex.ru/maps/?pt=61.371041,55.154774&z=17&l=map" target="_blank" rel="noopener" aria-label="Открыть карту: Челябинск, Витебская, 4">
+          <img class="map-card__img" src="../assets/img/banquet-photo-5.jpg" alt="" aria-hidden="true" loading="lazy">
           <span class="map-card__pin">
             <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="margin:0 auto">
               <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"></path>
@@ -296,6 +325,11 @@
     </div>
   </div>
 </footer>
+
+<div class="mobile-bar">
+  <button class="btn btn_primary" type="button" data-modal="modal-banquet">Рассчитать банкет</button>
+  <a class="btn btn_ghost" href="tel:+79087003179">Позвонить</a>
+</div>
 
 <div class="modal" id="modal-banquet" hidden>
   <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="banquet-title">
@@ -359,6 +393,13 @@
   <div class="modal__box modal__box_wide" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
     <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">&times;</button>
     <figure class="modal__figure"><img id="modal-image-src" src="" alt=""></figure>
+    <div class="slider__dots" style="margin-top:14px;align-items:center;gap:18px">
+      <button class="slider__arrow" type="button" data-zoom-nav="-1" aria-label="Предыдущее фото"
+              style="position:static;transform:none">‹</button>
+      <span id="modal-image-counter" class="muted" style="font-size:var(--step-1)"></span>
+      <button class="slider__arrow" type="button" data-zoom-nav="1" aria-label="Следующее фото"
+              style="position:static;transform:none">›</button>
+    </div>
   </div>
 </div>
 

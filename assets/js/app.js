@@ -101,20 +101,59 @@
     });
   }
 
-  /* ── Просмотр картинок (меню и галерея) ──────────────────────── */
+  /* ── Просмотр картинок (меню и галерея) ────────────────────────
+     Листается стрелками, клавишами и свайпом. Группой считаются
+     все картинки внутри общего контейнера [data-zoom-group]. */
+  var zoomItems = [];
+  var zoomIndex = 0;
+
+  function showZoom(index) {
+    var modal = $('#modal-image');
+    var image = $('#modal-image-src');
+    if (!modal || !image || !zoomItems.length) return;
+
+    zoomIndex = (index + zoomItems.length) % zoomItems.length;
+    var source = zoomItems[zoomIndex];
+    image.src = source.currentSrc || source.src;
+    image.alt = source.alt || '';
+
+    var counter = $('#modal-image-counter', modal);
+    if (counter) {
+      counter.textContent = zoomItems.length > 1
+        ? zoomIndex + 1 + ' / ' + zoomItems.length : '';
+    }
+    $$('[data-zoom-nav]', modal).forEach(function (btn) {
+      btn.hidden = zoomItems.length < 2;
+    });
+  }
+
   function initLightbox() {
     var modal = $('#modal-image');
     if (!modal) return;
-    var image = $('#modal-image-src');
 
     document.addEventListener('click', function (event) {
       var trigger = event.target.closest('[data-zoom]');
-      if (!trigger) return;
-      var source = trigger.querySelector('img');
-      if (!source) return;
-      image.src = source.currentSrc || source.src;
-      image.alt = source.alt || '';
-      openModal(modal);
+      if (trigger) {
+        var source = trigger.querySelector('img') ||
+          (trigger.tagName === 'IMG' ? trigger : null);
+        if (!source) return;
+        var group = trigger.closest('[data-zoom-group]') || document;
+        zoomItems = $$('[data-zoom] img, img[data-zoom]', group);
+        showZoom(Math.max(0, zoomItems.indexOf(source)));
+        openModal(modal);
+        return;
+      }
+      var nav = event.target.closest('[data-zoom-nav]');
+      if (nav) {
+        event.preventDefault();
+        showZoom(zoomIndex + Number(nav.getAttribute('data-zoom-nav')));
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (modal.hidden) return;
+      if (event.key === 'ArrowRight') showZoom(zoomIndex + 1);
+      if (event.key === 'ArrowLeft') showZoom(zoomIndex - 1);
     });
   }
 
@@ -221,10 +260,12 @@
     var empty = $('#specials-empty');
     if (!list) return;
 
+    var section = list.closest('.section');
     var items = Array.isArray(window.SPECIALS) ? window.SPECIALS : [];
     if (!items.length) return;
 
     if (empty) empty.hidden = true;
+    if (section) section.hidden = false;
     list.innerHTML = items.map(function (item) {
       var media = item.image
         ? '<div class="card__media"><img src="' + item.image + '" alt="" loading="lazy"></div>'
@@ -237,6 +278,175 @@
           note +
         '</div></article>';
     }).join('');
+  }
+
+  /* ── Появление секций при скролле ────────────────────────────── */
+  function initReveal() {
+    var items = $$('[data-reveal]');
+    if (!items.length) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+
+    items.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ── Счётчики цифр ───────────────────────────────────────────── */
+  function initCounters() {
+    var nums = $$('[data-count]');
+    if (!nums.length) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function run(el) {
+      var target = Number(el.getAttribute('data-count'));
+      if (reduced || !target) { el.textContent = String(target); return; }
+
+      var duration = 1400;
+      var started = null;
+      function step(now) {
+        if (started === null) started = now;
+        var progress = Math.min((now - started) / duration, 1);
+        // замедление к концу — движение выглядит естественнее
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = String(Math.round(target * eased));
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    if (!('IntersectionObserver' in window)) { nums.forEach(run); return; }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        run(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.4 });
+
+    nums.forEach(function (el) { el.textContent = '0'; observer.observe(el); });
+  }
+
+  /* ── Параллакс фото-врезок ───────────────────────────────────── */
+  function initParallax() {
+    var bands = $$('.band');
+    if (!bands.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var viewport = window.innerHeight;
+      bands.forEach(function (band) {
+        var image = $('.band__bg', band);
+        if (!image) return;
+        var box = band.getBoundingClientRect();
+        if (box.bottom < 0 || box.top > viewport) return;
+        // -1 сверху экрана, +1 снизу
+        var position = (box.top + box.height / 2 - viewport / 2) / (viewport / 2 + box.height / 2);
+        image.style.transform = 'translate3d(0, ' + (position * 9).toFixed(2) + '%, 0)';
+      });
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  }
+
+  /* ── Слайдер сканов меню ─────────────────────────────────────── */
+  function initSliders() {
+    $$('.slider').forEach(function (slider) {
+      var track = $('.slider__track', slider);
+      var slides = $$('.slider__slide', slider);
+      var prev = $('.slider__arrow_prev', slider);
+      var next = $('.slider__arrow_next', slider);
+      var dotsBox = $('.slider__dots', slider);
+      if (!track || slides.length < 1) return;
+
+      var index = 0;
+      var dots = [];
+
+      if (dotsBox && slides.length > 1) {
+        dotsBox.innerHTML = '';
+        slides.forEach(function (slide, i) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'slider__dot';
+          dot.setAttribute('aria-label', 'Страница ' + (i + 1));
+          dot.addEventListener('click', function () { go(i); });
+          dotsBox.appendChild(dot);
+          dots.push(dot);
+        });
+      }
+
+      function go(to) {
+        index = Math.max(0, Math.min(to, slides.length - 1));
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+        dots.forEach(function (dot, i) {
+          dot.setAttribute('aria-current', String(i === index));
+        });
+        if (prev) prev.disabled = index === 0;
+        if (next) next.disabled = index === slides.length - 1;
+      }
+
+      if (prev) prev.addEventListener('click', function () { go(index - 1); });
+      if (next) next.addEventListener('click', function () { go(index + 1); });
+
+      // Свайп пальцем
+      var startX = null;
+      slider.addEventListener('touchstart', function (event) {
+        startX = event.touches[0].clientX;
+      }, { passive: true });
+      slider.addEventListener('touchend', function (event) {
+        if (startX === null) return;
+        var delta = event.changedTouches[0].clientX - startX;
+        if (Math.abs(delta) > 45) go(index + (delta < 0 ? 1 : -1));
+        startX = null;
+      });
+
+      if (slides.length < 2) {
+        if (prev) prev.hidden = true;
+        if (next) next.hidden = true;
+      }
+      go(0);
+    });
+  }
+
+  /* ── Тень у шапки при прокрутке ──────────────────────────────── */
+  function initHeaderShadow() {
+    var header = $('.site-header');
+    if (!header) return;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      header.classList.toggle('is-stuck', window.pageYOffset > 8);
+    }
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+    update();
   }
 
   /* ── Мелочи ──────────────────────────────────────────────────── */
@@ -258,6 +468,11 @@
     initLightbox();
     initForms();
     initSpecials();
+    initReveal();
+    initCounters();
+    initParallax();
+    initSliders();
+    initHeaderShadow();
     initMisc();
   });
 })();
